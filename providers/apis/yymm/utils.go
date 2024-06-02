@@ -1,9 +1,10 @@
-package dydx
+package yymm
 
 import (
 	"encoding/json"
 	"fmt"
 	"github.com/skip-mev/slinky/providers/apis/bitverse"
+	yymmtypes "github.com/skip-mev/slinky/providers/apis/yymm/types"
 	"strings"
 	"time"
 
@@ -13,7 +14,6 @@ import (
 	slinkytypes "github.com/skip-mev/slinky/pkg/types"
 	"github.com/skip-mev/slinky/providers/apis/binance"
 	coinbaseapi "github.com/skip-mev/slinky/providers/apis/coinbase"
-	dydxtypes "github.com/skip-mev/slinky/providers/apis/dydx/types"
 	"github.com/skip-mev/slinky/providers/apis/kraken"
 	"github.com/skip-mev/slinky/providers/volatile"
 	"github.com/skip-mev/slinky/providers/websockets/bitfinex"
@@ -31,13 +31,13 @@ import (
 
 const (
 	// Name is the name of the MarketMap provider.
-	Name = "dydx_api"
+	Name = "yymm_api"
 
 	// ChainID is the chain ID for the dYdX market map provider.
-	ChainID = "dydx-mainnet-1"
+	ChainID = "yymm_5858-1"
 
 	// Endpoint is the endpoint for the dYdX market map API.
-	Endpoint = "%s/dydxprotocol/prices/params/market?limit=10000"
+	Endpoint = "%s/yymmchain/oracle/params/market?limit=10000"
 
 	// Delimeter is the delimeter used to separate the base and quote assets in a pair.
 	Delimeter = "-"
@@ -77,7 +77,7 @@ var ProviderMapping = map[string][]string{
 }
 
 // ConvertMarketParamsToMarketMap converts a dYdX market params response to a slinky market map response.
-func ConvertMarketParamsToMarketMap(params dydxtypes.QueryAllMarketParamsResponse, logger *zap.Logger) (mmtypes.GetMarketMapResponse, error) {
+func ConvertMarketParamsToMarketMap(params yymmtypes.QueryAllMarketParamsResponse, logger *zap.Logger) (mmtypes.GetMarketMapResponse, error) {
 	marketMap := mmtypes.MarketMap{
 		Tickers:         make(map[string]mmtypes.Ticker),
 		Providers:       make(map[string]mmtypes.Providers),
@@ -92,7 +92,7 @@ func ConvertMarketParamsToMarketMap(params dydxtypes.QueryAllMarketParamsRespons
 			return mmtypes.GetMarketMapResponse{}, err
 		}
 
-		var exchangeConfigJSON dydxtypes.ExchangeConfigJson
+		var exchangeConfigJSON yymmtypes.ExchangeConfigJson
 		if err := json.Unmarshal([]byte(market.ExchangeConfigJson), &exchangeConfigJSON); err != nil {
 			return mmtypes.GetMarketMapResponse{}, fmt.Errorf("failed to unmarshal exchange json config for %s: %w", ticker.String(), err)
 		}
@@ -135,7 +135,7 @@ func CreateCurrencyPairFromPair(pair string) (slinkytypes.CurrencyPair, error) {
 }
 
 // CreateTickerFromMarket creates a ticker from a dYdX market.
-func CreateTickerFromMarket(market dydxtypes.MarketParam) (mmtypes.Ticker, error) {
+func CreateTickerFromMarket(market yymmtypes.MarketParam) (mmtypes.Ticker, error) {
 	cp, err := CreateCurrencyPairFromPair(market.Pair)
 	if err != nil {
 		return mmtypes.Ticker{}, err
@@ -155,13 +155,13 @@ func CreateTickerFromMarket(market dydxtypes.MarketParam) (mmtypes.Ticker, error
 // pair using the dYdX market.
 func ConvertExchangeConfigJSON(
 	ticker mmtypes.Ticker,
-	config dydxtypes.ExchangeConfigJson,
+	config yymmtypes.ExchangeConfigJson,
 	logger *zap.Logger,
 ) (mmtypes.Paths, mmtypes.Providers, error) {
 	var (
 		paths     []mmtypes.Path
 		providers []mmtypes.ProviderConfig
-		seen      = make(map[dydxtypes.ExchangeMarketConfigJson]struct{})
+		seen      = make(map[yymmtypes.ExchangeMarketConfigJson]struct{})
 	)
 
 	for _, cfg := range config.Exchanges {
@@ -263,7 +263,7 @@ func InvertedConversion(
 // IndirectConversion is a conversion of two markets i.e. BTC/USDT * USDT/USD = BTC/USD.
 func IndirectConversion(
 	ticker mmtypes.Ticker,
-	cfg dydxtypes.ExchangeMarketConfigJson,
+	cfg yymmtypes.ExchangeMarketConfigJson,
 	exchangeNames []string,
 ) ([]mmtypes.Path, error) {
 	cp, err := CreateCurrencyPairFromPair(cfg.AdjustByMarket)
@@ -297,7 +297,7 @@ func IndirectConversion(
 // where the inverted quote of the first market and quote of the second market are used.
 // i.e. BTC/USDT ^ -1 * BTC/USD = USDT/USD.
 func IndirectInvertedConversion(
-	cfg dydxtypes.ExchangeMarketConfigJson,
+	cfg yymmtypes.ExchangeMarketConfigJson,
 	exchangeNames []string,
 ) ([]mmtypes.Path, error) {
 	cp, err := CreateCurrencyPairFromPair(cfg.AdjustByMarket)

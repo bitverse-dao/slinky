@@ -1,7 +1,8 @@
 module github.com/skip-mev/slinky/tests/petri
 
-go 1.21.6
-toolchain go1.22.1
+go 1.22
+
+toolchain go1.22.2
 
 require (
 	github.com/cosmos/cosmos-sdk v0.50.5

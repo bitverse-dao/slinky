@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/skip-mev/slinky/providers/apis/bitverse"
+	"github.com/skip-mev/slinky/providers/apis/yymm"
 	"io"
 	"os"
 	"strings"
@@ -15,6 +17,7 @@ import (
 	"github.com/skip-mev/slinky/oracle/types"
 	slinkytypes "github.com/skip-mev/slinky/pkg/types"
 	"github.com/skip-mev/slinky/providers/apis/binance"
+	bitverseapi "github.com/skip-mev/slinky/providers/apis/bitverse"
 	coinbaseapi "github.com/skip-mev/slinky/providers/apis/coinbase"
 	"github.com/skip-mev/slinky/providers/apis/coingecko"
 	raydium "github.com/skip-mev/slinky/providers/apis/defi/raydium"
@@ -104,6 +107,7 @@ var (
 		coingecko.Name:     coingecko.DefaultMarketConfig,
 		geckoterminal.Name: geckoterminal.DefaultETHMarketConfig,
 		krakenapi.Name:     krakenapi.DefaultMarketConfig,
+		bitverse.Name:      bitverseapi.DefaultMarketConfig,
 		// // -----------------------------------------------------------	//
 		// // ---------------------Start WebSocket Providers--------------	//
 		// // -----------------------------------------------------------	//
@@ -163,6 +167,11 @@ var (
 			{
 				Name: krakenapi.Name,
 				API:  krakenapi.DefaultAPIConfig,
+				Type: types.ConfigType,
+			},
+			{
+				Name: bitverseapi.Name,
+				API:  bitverse.DefaultAPIConfig,
 				Type: types.ConfigType,
 			},
 			{
@@ -372,6 +381,37 @@ func createOracleConfig() error {
 		LocalOracleConfig.Providers = ps
 	}
 
+	if strings.ToLower(chain) == constants.YYMM {
+		// Filter out the providers that are not supported by the dYdX chain.
+		validProviders := make(map[string]struct{})
+		for _, providers := range yymm.ProviderMapping {
+			for _, provider := range providers {
+				validProviders[provider] = struct{}{}
+			}
+		}
+
+		ps := make([]config.ProviderConfig, 0)
+		for _, provider := range LocalOracleConfig.Providers {
+			if _, ok := validProviders[provider.Name]; ok {
+				ps = append(ps, provider)
+			}
+		}
+
+		if len(nodeURL) == 0 {
+			return fmt.Errorf("dYdX node URL is required; please specify your YYMM node URL using the --node-http-url flag (ex. --node-http-url http://localhost:1317)")
+		}
+		apiCfg := yymm.DefaultAPIConfig
+		apiCfg.URL = nodeURL
+
+		// Add the dYdX market map provider to the list of providers.
+		ps = append(ps, config.ProviderConfig{
+			Name: yymm.Name,
+			API:  apiCfg,
+			Type: mmclienttypes.ConfigType,
+		})
+		LocalOracleConfig.Providers = ps
+	}
+
 	// add raydium provider to the list of providers if enabled
 	if raydiumEnabled {
 		cfg := raydium.DefaultAPIConfig
@@ -437,6 +477,14 @@ func createMarketMap() error {
 		fmt.Fprintf(
 			os.Stderr,
 			"dYdX chain requires the use of a predetermined market map. please use the market map provided by the Skip/dYdX team or the default market map provided in /config/dydx/market.json",
+		)
+		return nil
+	}
+
+	if strings.ToLower(chain) == constants.YYMM {
+		fmt.Fprintf(
+			os.Stderr,
+			"yymm chain requires the use of a predetermined market map. please use the market map provided by the Skip/yymm team or the default market map provided in /config/yymm/market.json",
 		)
 		return nil
 	}

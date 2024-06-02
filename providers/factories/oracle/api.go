@@ -2,6 +2,7 @@ package oracle
 
 import (
 	"fmt"
+	"github.com/skip-mev/slinky/providers/apis/bitverse"
 	"net/http"
 
 	"github.com/skip-mev/slinky/providers/apis/defi/raydium"
@@ -69,6 +70,8 @@ func APIQueryHandlerFactory(
 		apiDataHandler, err = geckoterminal.NewAPIHandler(marketMap, cfg.API)
 	case kraken.Name:
 		apiDataHandler, err = kraken.NewAPIHandler(marketMap, cfg.API)
+	case bitverse.Name:
+		apiDataHandler, err = bitverse.NewAPIHandler(marketMap, cfg.API)
 	case uniswapv3.Name:
 		var ethClient uniswapv3.EVMClient
 		ethClient, err = uniswapv3.NewGoEthereumClientImpl(cfg.API.URL)

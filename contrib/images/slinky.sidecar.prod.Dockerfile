@@ -3,7 +3,7 @@ FROM golang:1.22-bullseye AS builder
 WORKDIR /src/slinky
 COPY go.mod .
 
-RUN go mod download
+RUN go env -w GO111MODULE=on && go env -w GOPROXY='https://goproxy.cn,direct' && go mod download
 
 COPY . .
 

@@ -1,6 +1,7 @@
 package oracle
 
 import (
+	"github.com/skip-mev/slinky/providers/apis/yymm"
 	"net/http"
 
 	"go.uber.org/zap"
@@ -42,6 +43,9 @@ func MarketMapProviderFactory(
 	case dydx.Name:
 		apiDataHandler, err = dydx.NewAPIHandler(cfg.API, logger)
 		ids = []types.Chain{{ChainID: dydx.ChainID}}
+	case yymm.Name:
+		apiDataHandler, err = yymm.NewAPIHandler(cfg.API, logger)
+		ids = []types.Chain{{ChainID: yymm.ChainID}}
 	default:
 		apiDataHandler, err = marketmap.NewAPIHandler(cfg.API)
 	}
