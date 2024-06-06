@@ -2,6 +2,7 @@ package oracle
 
 import (
 	"fmt"
+	"github.com/skip-mev/slinky/providers/websockets/bitverse"
 	"net/http"
 
 	"go.uber.org/zap"
@@ -96,6 +97,8 @@ func WebSocketQueryHandlerFactory(
 		wsDataHandler, err = mexc.NewWebSocketDataHandler(logger, marketMap, cfg.WebSocket)
 	case okx.Name:
 		wsDataHandler, err = okx.NewWebSocketDataHandler(logger, marketMap, cfg.WebSocket)
+	case bitverse.Name:
+		wsDataHandler, err = bitverse.NewWebSocketDataHandler(logger, marketMap, cfg.WebSocket)
 	default:
 		return nil, fmt.Errorf("unknown provider: %s", cfg.Name)
 	}

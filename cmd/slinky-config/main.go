@@ -3,8 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/skip-mev/slinky/providers/apis/bitverse"
 	"github.com/skip-mev/slinky/providers/apis/yymm"
+	"github.com/skip-mev/slinky/providers/websockets/bitverse"
 	"io"
 	"os"
 	"strings"
@@ -107,7 +107,7 @@ var (
 		coingecko.Name:     coingecko.DefaultMarketConfig,
 		geckoterminal.Name: geckoterminal.DefaultETHMarketConfig,
 		krakenapi.Name:     krakenapi.DefaultMarketConfig,
-		bitverse.Name:      bitverseapi.DefaultMarketConfig,
+		bitverseapi.Name:   bitverseapi.DefaultMarketConfig,
 		// // -----------------------------------------------------------	//
 		// // ---------------------Start WebSocket Providers--------------	//
 		// // -----------------------------------------------------------	//
@@ -122,6 +122,7 @@ var (
 		kucoin.Name:       kucoin.DefaultMarketConfig,
 		mexc.Name:         mexc.DefaultMarketConfig,
 		okx.Name:          okx.DefaultMarketConfig,
+		bitverse.Name:     bitverse.DefaultMarketConfig,
 	}
 
 	// LocalConfig defines a readable config for local development. Any changes to this
@@ -171,7 +172,7 @@ var (
 			},
 			{
 				Name: bitverseapi.Name,
-				API:  bitverse.DefaultAPIConfig,
+				API:  bitverseapi.DefaultAPIConfig,
 				Type: types.ConfigType,
 			},
 			{
@@ -199,6 +200,11 @@ var (
 			{
 				Name:      bybit.Name,
 				WebSocket: bybit.DefaultWebSocketConfig,
+				Type:      types.ConfigType,
+			},
+			{
+				Name:      bitverse.Name,
+				WebSocket: bitverse.DefaultWebSocketConfig,
 				Type:      types.ConfigType,
 			},
 			{
