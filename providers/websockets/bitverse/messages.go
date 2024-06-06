@@ -189,6 +189,6 @@ type TickerUpdateData struct {
 	IndexPrice      string `json:"indexPrice"`
 	OraclePrice     string `json:"oraclePrice"`
 	Volume24h       string `json:"volume24h"`
-	OpenTime        string `json:"openTime"`
-	CloseTime       string `json:"closeTime"`
+	OpenTime        int64  `json:"openTime"`
+	CloseTime       int64  `json:"closeTime"`
 }

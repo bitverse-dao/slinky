@@ -3,8 +3,9 @@ package yymm
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/skip-mev/slinky/providers/apis/bitverse"
+	bitverseapi "github.com/skip-mev/slinky/providers/apis/bitverse"
 	yymmtypes "github.com/skip-mev/slinky/providers/apis/yymm/types"
+	"github.com/skip-mev/slinky/providers/websockets/bitverse"
 	"strings"
 	"time"
 
@@ -63,7 +64,7 @@ var ProviderMapping = map[string][]string{
 	"BinanceUS":            {binance.Name},
 	"Bitfinex":             {bitfinex.Name},
 	"Kraken":               {kraken.Name}, // We only support the API since the WebSocket has different pairs.
-	"Bitverse":             {bitverse.Name},
+	"Bitverse":             {bitverseapi.Name, bitverse.Name},
 	"Gate":                 {gate.Name},
 	"Bitstamp":             {bitstamp.Name},
 	"Bybit":                {bybit.Name},
