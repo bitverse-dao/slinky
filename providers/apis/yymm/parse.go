@@ -34,7 +34,6 @@ import (
 // ref: https://github.com/yymmprotocol/v4-chain/blob/main/protocol/daemons/pricefeed/client/constants/exchange_common/exchange_id.go
 var ProviderMapping = map[string]string{
 	"Binance":              binance.Name,
-	"BinanceUS":            binance.Name,
 	"Bitfinex":             bitfinex.Name,
 	"Kraken":               kraken.Name, // We only support the API since the WebSocket has different pairs.
 	"Gate":                 gate.Name,
