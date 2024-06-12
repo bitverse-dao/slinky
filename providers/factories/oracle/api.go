@@ -3,6 +3,7 @@ package oracle
 import (
 	"context"
 	"fmt"
+	bitverseapi "github.com/skip-mev/slinky/providers/apis/bitverse"
 	"net/http"
 	"strings"
 
@@ -65,6 +66,8 @@ func APIQueryHandlerFactory(
 		apiDataHandler, err = binance.NewAPIHandler(cfg.API)
 	case providerName == coinbaseapi.Name:
 		apiDataHandler, err = coinbaseapi.NewAPIHandler(cfg.API)
+	case providerName == bitverseapi.Name:
+		apiDataHandler, err = bitverseapi.NewAPIHandler(cfg.API)
 	case providerName == coingecko.Name:
 		apiDataHandler, err = coingecko.NewAPIHandler(cfg.API)
 	case providerName == geckoterminal.Name:

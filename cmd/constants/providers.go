@@ -3,10 +3,12 @@ package constants
 import (
 	"github.com/skip-mev/slinky/oracle/config"
 	"github.com/skip-mev/slinky/providers/apis/yymm"
+	"github.com/skip-mev/slinky/providers/websockets/bitverse"
 
 	"github.com/skip-mev/slinky/oracle/constants"
 	"github.com/skip-mev/slinky/oracle/types"
 	binanceapi "github.com/skip-mev/slinky/providers/apis/binance"
+	bitverseapi "github.com/skip-mev/slinky/providers/apis/bitverse"
 	coinbaseapi "github.com/skip-mev/slinky/providers/apis/coinbase"
 	"github.com/skip-mev/slinky/providers/apis/defi/raydium"
 	"github.com/skip-mev/slinky/providers/apis/defi/uniswapv3"
@@ -54,6 +56,11 @@ var (
 			Type: types.ConfigType,
 		},
 		{
+			Name: bitverseapi.Name,
+			API:  bitverseapi.DefaultAPIConfig,
+			Type: types.ConfigType,
+		},
+		{
 			Name: binanceapi.Name,
 			API:  binanceapi.DefaultNonUSAPIConfig,
 			Type: types.ConfigType,
@@ -86,6 +93,11 @@ var (
 		{
 			Name:      coinbase.Name,
 			WebSocket: coinbase.DefaultWebSocketConfig,
+			Type:      types.ConfigType,
+		},
+		{
+			Name:      bitverse.Name,
+			WebSocket: bitverse.DefaultWebSocketConfig,
 			Type:      types.ConfigType,
 		},
 		{

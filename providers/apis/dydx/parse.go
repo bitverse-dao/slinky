@@ -3,6 +3,7 @@ package dydx
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/skip-mev/slinky/providers/websockets/bitverse"
 	"strings"
 
 	"go.uber.org/zap"
@@ -45,6 +46,7 @@ var ProviderMapping = map[string]string{
 	"Okx":                  okx.Name,
 	"Mexc":                 mexc.Name,
 	"CoinbasePro":          coinbase.Name,
+	"Bitverse":             bitverse.Name,
 	"TestVolatileExchange": volatile.Name,
 	"Raydium":              raydium.Name,
 	"UniswapV3-Ethereum":   uniswapv3.ProviderNames[constants.ETHEREUM],
