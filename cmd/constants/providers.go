@@ -2,6 +2,7 @@ package constants
 
 import (
 	"github.com/skip-mev/slinky/oracle/config"
+	"github.com/skip-mev/slinky/providers/apis/yymm"
 
 	"github.com/skip-mev/slinky/oracle/constants"
 	"github.com/skip-mev/slinky/oracle/types"
@@ -143,11 +144,23 @@ var (
 			API:  dydx.DefaultResearchAPIConfig,
 			Type: mmtypes.ConfigType,
 		},
+		{
+			Name: yymm.Name,
+			API:  yymm.DefaultAPIConfig,
+			Type: mmtypes.ConfigType,
+		},
+		{
+			Name: yymm.ResearchAPIHandlerName,
+			API:  yymm.DefaultResearchAPIConfig,
+			Type: mmtypes.ConfigType,
+		},
 	}
 
 	MarketMapProviderNames = map[string]struct{}{
 		dydx.Name:                   {},
 		dydx.ResearchAPIHandlerName: {},
+		yymm.Name:                   {},
+		yymm.ResearchAPIHandlerName: {},
 		marketmap.Name:              {},
 	}
 )
