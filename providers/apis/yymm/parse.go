@@ -10,12 +10,12 @@ import (
 
 	"github.com/skip-mev/slinky/oracle/constants"
 	slinkytypes "github.com/skip-mev/slinky/pkg/types"
-	"github.com/skip-mev/slinky/providers/apis/binance"
 	"github.com/skip-mev/slinky/providers/apis/defi/raydium"
 	"github.com/skip-mev/slinky/providers/apis/defi/uniswapv3"
 	"github.com/skip-mev/slinky/providers/apis/kraken"
 	yymmtypes "github.com/skip-mev/slinky/providers/apis/yymm/types"
 	"github.com/skip-mev/slinky/providers/volatile"
+	"github.com/skip-mev/slinky/providers/websockets/binance"
 	"github.com/skip-mev/slinky/providers/websockets/bitfinex"
 	"github.com/skip-mev/slinky/providers/websockets/bitstamp"
 	"github.com/skip-mev/slinky/providers/websockets/bybit"
@@ -34,6 +34,7 @@ import (
 // ref: https://github.com/yymmprotocol/v4-chain/blob/main/protocol/daemons/pricefeed/client/constants/exchange_common/exchange_id.go
 var ProviderMapping = map[string]string{
 	"Binance":              binance.Name,
+	"BinanceUS":            binance.Name,
 	"Bitfinex":             bitfinex.Name,
 	"Kraken":               kraken.Name, // We only support the API since the WebSocket has different pairs.
 	"Gate":                 gate.Name,

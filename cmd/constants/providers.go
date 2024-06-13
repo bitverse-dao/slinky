@@ -3,6 +3,7 @@ package constants
 import (
 	"github.com/skip-mev/slinky/oracle/config"
 	"github.com/skip-mev/slinky/providers/apis/yymm"
+	"github.com/skip-mev/slinky/providers/websockets/binance"
 	"github.com/skip-mev/slinky/providers/websockets/bitverse"
 
 	"github.com/skip-mev/slinky/oracle/constants"
@@ -49,7 +50,12 @@ var (
 			Type: types.ConfigType,
 		},
 
-		// Exchange providers
+		// Exchange API providers
+		{
+			Name: binanceapi.Name,
+			API:  binanceapi.DefaultNonUSAPIConfig,
+			Type: types.ConfigType,
+		},
 		{
 			Name: coinbaseapi.Name,
 			API:  coinbaseapi.DefaultAPIConfig,
@@ -61,11 +67,6 @@ var (
 			Type: types.ConfigType,
 		},
 		{
-			Name: binanceapi.Name,
-			API:  binanceapi.DefaultNonUSAPIConfig,
-			Type: types.ConfigType,
-		},
-		{
 			Name: krakenapi.Name,
 			API:  krakenapi.DefaultAPIConfig,
 			Type: types.ConfigType,
@@ -74,6 +75,12 @@ var (
 			Name: volatile.Name,
 			API:  volatile.DefaultAPIConfig,
 			Type: types.ConfigType,
+		},
+		// Exchange WebSocket providers
+		{
+			Name:      binance.Name,
+			WebSocket: binance.DefaultWebSocketConfig,
+			Type:      types.ConfigType,
 		},
 		{
 			Name:      bitfinex.Name,

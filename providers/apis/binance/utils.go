@@ -21,8 +21,6 @@ const (
 	// by Non-US users.
 	URL = "https://api.binance.com/api/v3/ticker/price?symbols=%s%s%s"
 
-	US_URL = "https://api.binance.us/api/v3/ticker/price?symbols=%s%s%s"
-
 	Quotation    = "%22"
 	Separator    = ","
 	LeftBracket  = "%5B"
@@ -38,7 +36,7 @@ var DefaultNonUSAPIConfig = config.APIConfig{
 	Interval:         750 * time.Millisecond,
 	ReconnectTimeout: 2000 * time.Millisecond,
 	MaxQueries:       1,
-	Endpoints:        []config.Endpoint{{URL: URL}, {URL: US_URL}},
+	Endpoints:        []config.Endpoint{{URL: URL}},
 }
 
 type (

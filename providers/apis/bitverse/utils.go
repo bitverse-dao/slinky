@@ -35,9 +35,9 @@ var DefaultAPIConfig = config.APIConfig{
 	Endpoints:        []config.Endpoint{{URL: URL}, {URL: URL_DEV}},
 }
 
-// BitverseTicker is our representation of ticker information returned in Binance response.
+// Ticker is our representation of ticker information returned in Binance response.
 // It implements interface `Ticker` in util.go.
-type BitverseTicker struct {
+type Ticker struct {
 	Pair      string `json:"symbol" validate:"required"`
 	AskPrice  string `json:"indexPrice" validate:"required,positive-float-string"`
 	BidPrice  string `json:"oraclePrice" validate:"required,positive-float-string"`
@@ -48,8 +48,8 @@ type BitverseTicker struct {
 // and all Tickers will be undefined.
 // ResponseBody defines the overall Huobi response.
 type ResponseBody struct {
-	Code    uint32         `json:"code" validate:"required"`
-	Tickers BitverseTicker `json:"data" validate:"required"`
+	Code    uint32 `json:"code" validate:"required"`
+	Tickers Ticker `json:"data" validate:"required"`
 }
 
 // Decode decodes the given http response into a TickerResult.

@@ -3,19 +3,14 @@ package oracle
 import (
 	"context"
 	"fmt"
-	bitverseapi "github.com/skip-mev/slinky/providers/apis/bitverse"
-	"net/http"
-	"strings"
-
-	"github.com/skip-mev/slinky/providers/apis/defi/raydium"
-
-	"go.uber.org/zap"
 
 	"github.com/skip-mev/slinky/oracle/config"
 	"github.com/skip-mev/slinky/oracle/types"
 	"github.com/skip-mev/slinky/providers/apis/binance"
+	bitverseapi "github.com/skip-mev/slinky/providers/apis/bitverse"
 	coinbaseapi "github.com/skip-mev/slinky/providers/apis/coinbase"
 	"github.com/skip-mev/slinky/providers/apis/coingecko"
+	"github.com/skip-mev/slinky/providers/apis/defi/raydium"
 	"github.com/skip-mev/slinky/providers/apis/defi/uniswapv3"
 	"github.com/skip-mev/slinky/providers/apis/geckoterminal"
 	"github.com/skip-mev/slinky/providers/apis/kraken"
@@ -23,6 +18,9 @@ import (
 	"github.com/skip-mev/slinky/providers/base/api/metrics"
 	"github.com/skip-mev/slinky/providers/static"
 	"github.com/skip-mev/slinky/providers/volatile"
+	"go.uber.org/zap"
+	"net/http"
+	"strings"
 )
 
 // APIQueryHandlerFactory returns a sample implementation of the API query handler factory.

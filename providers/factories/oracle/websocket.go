@@ -3,6 +3,7 @@ package oracle
 import (
 	"context"
 	"fmt"
+	"github.com/skip-mev/slinky/providers/websockets/binance"
 	"github.com/skip-mev/slinky/providers/websockets/bitverse"
 	"net/http"
 
@@ -15,7 +16,6 @@ import (
 	wsmetrics "github.com/skip-mev/slinky/providers/base/websocket/metrics"
 	"github.com/skip-mev/slinky/providers/websockets/bitfinex"
 	"github.com/skip-mev/slinky/providers/websockets/bitstamp"
-	bitversews "github.com/skip-mev/slinky/providers/websockets/bitverse"
 	"github.com/skip-mev/slinky/providers/websockets/bybit"
 	coinbasews "github.com/skip-mev/slinky/providers/websockets/coinbase"
 	"github.com/skip-mev/slinky/providers/websockets/cryptodotcom"
@@ -58,6 +58,8 @@ func WebSocketQueryHandlerFactory(
 	)
 
 	switch cfg.Name {
+	case binance.Name:
+		wsDataHandler, err = binance.NewWebSocketDataHandler(logger, cfg.WebSocket)
 	case bitfinex.Name:
 		wsDataHandler, err = bitfinex.NewWebSocketDataHandler(logger, cfg.WebSocket)
 	case bitstamp.Name:
@@ -66,7 +68,7 @@ func WebSocketQueryHandlerFactory(
 		wsDataHandler, err = bybit.NewWebSocketDataHandler(logger, cfg.WebSocket)
 	case coinbasews.Name:
 		wsDataHandler, err = coinbasews.NewWebSocketDataHandler(logger, cfg.WebSocket)
-	case bitversews.Name:
+	case bitverse.Name:
 		wsDataHandler, err = bitverse.NewWebSocketDataHandler(logger, cfg.WebSocket)
 	case cryptodotcom.Name:
 		wsDataHandler, err = cryptodotcom.NewWebSocketDataHandler(logger, cfg.WebSocket)
