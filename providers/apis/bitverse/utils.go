@@ -18,9 +18,9 @@ const (
 
 	// URL is the base URL of the Kraken API. This includes the base and quote
 	// currency pairs that need to be inserted into the URL.
-	URL = "https://market.bitverse-dev.bitverse.zone/api/v1/market/ticker?symbol=%s"
+	URL_DEV = "https://market.bitverse-dev.bitverse.zone/api/v1/market/ticker?symbol=%s"
 
-	URL_DEV = "https://market.testnet.bitverse.zone/api/v1/market/ticker?symbol=%s"
+	URL = "https://market.testnet.bitverse.zone/api/v1/market/ticker?symbol=%s"
 )
 
 // DefaultAPIConfig is the default configuration for the Kraken API.

@@ -15,7 +15,7 @@ const (
 	Name = "bitverse_ws"
 
 	// URLProd is the public ByBit Websocket URL.
-	URLProd = "wss://stream.bitverse-dev.bitverse.zone"
+	URLProd = "wss://public-stream.testnet.bitverse.zone"
 
 	// DefaultPingInterval is the default ping interval for the ByBit websocket.
 	DefaultPingInterval = 15 * time.Second
