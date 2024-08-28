@@ -21,6 +21,8 @@ const (
 	URL_DEV = "https://market.bitverse-dev.bitverse.zone/api/v1/market/ticker?symbol=%s"
 
 	URL = "https://market.testnet.bitverse.zone/api/v1/market/ticker?symbol=%s"
+
+	URL_PROD = "https://market.bitverse.zone/api/v1/market/ticker?symbol=%s"
 )
 
 // DefaultAPIConfig is the default configuration for the Kraken API.
@@ -32,7 +34,7 @@ var DefaultAPIConfig = config.APIConfig{
 	Interval:         600 * time.Millisecond,
 	ReconnectTimeout: 2000 * time.Millisecond,
 	MaxQueries:       1,
-	Endpoints:        []config.Endpoint{{URL: URL}, {URL: URL_DEV}},
+	Endpoints:        []config.Endpoint{{URL: URL_PROD}, {URL: URL}, {URL: URL_DEV}},
 }
 
 // Ticker is our representation of ticker information returned in Binance response.
