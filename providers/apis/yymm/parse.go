@@ -3,9 +3,10 @@ package yymm
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
+
 	yymmtypes "github.com/skip-mev/slinky/providers/apis/yymm/types"
 	"github.com/skip-mev/slinky/providers/websockets/bitverse"
-	"strings"
 
 	"github.com/skip-mev/slinky/oracle/constants"
 	slinkytypes "github.com/skip-mev/slinky/pkg/types"

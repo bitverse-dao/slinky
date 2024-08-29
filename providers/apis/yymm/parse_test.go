@@ -1,8 +1,9 @@
 package yymm_test
 
 import (
-	"github.com/skip-mev/slinky/providers/apis/yymm"
 	"testing"
+
+	"github.com/skip-mev/slinky/providers/apis/yymm"
 
 	"github.com/stretchr/testify/require"
 
