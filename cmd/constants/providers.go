@@ -21,6 +21,7 @@ import (
 	binancews "github.com/skip-mev/slinky/providers/websockets/binance"
 	"github.com/skip-mev/slinky/providers/websockets/bitfinex"
 	"github.com/skip-mev/slinky/providers/websockets/bitstamp"
+	"github.com/skip-mev/slinky/providers/websockets/bitverse"
 	"github.com/skip-mev/slinky/providers/websockets/bybit"
 	"github.com/skip-mev/slinky/providers/websockets/coinbase"
 	"github.com/skip-mev/slinky/providers/websockets/cryptodotcom"
@@ -112,6 +113,11 @@ var (
 		{
 			Name:      bybit.Name,
 			WebSocket: bybit.DefaultWebSocketConfig,
+			Type:      types.ConfigType,
+		},
+		{
+			Name:      bitverse.Name,
+			WebSocket: bitverse.DefaultWebSocketConfig,
 			Type:      types.ConfigType,
 		},
 		{

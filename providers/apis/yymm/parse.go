@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	yymmtypes "github.com/skip-mev/slinky/providers/apis/yymm/types"
+	"github.com/skip-mev/slinky/providers/websockets/bitverse"
 	"strings"
 
 	"github.com/skip-mev/slinky/oracle/constants"
@@ -36,6 +37,7 @@ var ProviderMapping = map[string]string{
 	"Gate":                 gate.Name,
 	"Bitstamp":             bitstamp.Name,
 	"Bybit":                bybit.Name,
+	"Bitverse":             bitverse.Name,
 	"CryptoCom":            cryptodotcom.Name,
 	"Huobi":                huobi.Name,
 	"Kucoin":               kucoin.Name,

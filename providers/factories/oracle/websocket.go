@@ -3,6 +3,7 @@ package oracle
 import (
 	"context"
 	"fmt"
+	"github.com/skip-mev/slinky/providers/websockets/bitverse"
 	"net/http"
 
 	"go.uber.org/zap"
@@ -65,6 +66,8 @@ func WebSocketQueryHandlerFactory(
 		wsDataHandler, err = bitstamp.NewWebSocketDataHandler(logger, cfg.WebSocket)
 	case bybit.Name:
 		wsDataHandler, err = bybit.NewWebSocketDataHandler(logger, cfg.WebSocket)
+	case bitverse.Name:
+		wsDataHandler, err = bitverse.NewWebSocketDataHandler(logger, cfg.WebSocket)
 	case coinbasews.Name:
 		wsDataHandler, err = coinbasews.NewWebSocketDataHandler(logger, cfg.WebSocket)
 	case cryptodotcom.Name:
