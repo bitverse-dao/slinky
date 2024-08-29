@@ -3,6 +3,7 @@ package bitverse
 import (
 	"encoding/json"
 	"fmt"
+
 	"go.uber.org/zap"
 
 	"github.com/skip-mev/slinky/oracle/config"

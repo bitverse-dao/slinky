@@ -1,8 +1,9 @@
 package oracle
 
 import (
-	"github.com/skip-mev/slinky/providers/apis/yymm"
 	"net/http"
+
+	"github.com/skip-mev/slinky/providers/apis/yymm"
 
 	"go.uber.org/zap"
 

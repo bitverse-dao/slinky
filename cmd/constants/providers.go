@@ -20,6 +20,7 @@ import (
 	"github.com/skip-mev/connect/v2/providers/volatile"
 	binancews "github.com/skip-mev/connect/v2/providers/websockets/binance"
 	"github.com/skip-mev/connect/v2/providers/websockets/bitfinex"
+	"github.com/skip-mev/connect/v2/providers/websockets/bitget"
 	"github.com/skip-mev/connect/v2/providers/websockets/bitstamp"
 	"github.com/skip-mev/connect/v2/providers/websockets/bitverse"
 	"github.com/skip-mev/connect/v2/providers/websockets/bybit"
@@ -159,6 +160,12 @@ var (
 		{
 			Name:      okx.Name,
 			WebSocket: okx.DefaultWebSocketConfig,
+			Type:      types.ConfigType,
+		},
+
+		{
+			Name:      bitget.Name,
+			WebSocket: bitget.DefaultWebSocketConfig,
 			Type:      types.ConfigType,
 		},
 
