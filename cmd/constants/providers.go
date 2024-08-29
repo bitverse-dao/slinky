@@ -16,6 +16,7 @@ import (
 	krakenapi "github.com/skip-mev/connect/v2/providers/apis/kraken"
 	"github.com/skip-mev/connect/v2/providers/apis/marketmap"
 	"github.com/skip-mev/connect/v2/providers/apis/polymarket"
+	"github.com/skip-mev/connect/v2/providers/apis/yymm"
 	"github.com/skip-mev/connect/v2/providers/volatile"
 	binancews "github.com/skip-mev/connect/v2/providers/websockets/binance"
 	"github.com/skip-mev/connect/v2/providers/websockets/bitfinex"
@@ -191,6 +192,17 @@ var (
 			API:  dydx.DefaultResearchCMCAPIConfig,
 			Type: mmtypes.ConfigType,
 		},
+		// yymm
+		{
+			Name: yymm.Name,
+			API:  yymm.DefaultAPIConfig,
+			Type: mmtypes.ConfigType,
+		},
+		{
+			Name: yymm.SwitchOverAPIHandlerName,
+			API:  yymm.DefaultSwitchOverAPIConfig,
+			Type: mmtypes.ConfigType,
+		},
 	}
 
 	MarketMapProviderNames = map[string]struct{}{
@@ -199,5 +211,8 @@ var (
 		dydx.ResearchAPIHandlerName:    {},
 		dydx.ResearchCMCAPIHandlerName: {},
 		marketmap.Name:                 {},
+
+		yymm.Name:                     {},
+		yymm.SwitchOverAPIHandlerName: {},
 	}
 )
