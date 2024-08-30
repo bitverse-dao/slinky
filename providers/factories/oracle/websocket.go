@@ -3,9 +3,11 @@ package oracle
 import (
 	"context"
 	"fmt"
+	"net/http"
+
 	"github.com/skip-mev/slinky/providers/websockets/bitget"
 	"github.com/skip-mev/slinky/providers/websockets/bitmart"
-	"net/http"
+	"github.com/skip-mev/slinky/providers/websockets/xt"
 
 	"github.com/skip-mev/slinky/providers/websockets/bitverse"
 
@@ -110,6 +112,8 @@ func WebSocketQueryHandlerFactory(
 		wsDataHandler, err = bitget.NewWebSocketDataHandler(logger, cfg.WebSocket)
 	case bitmart.Name:
 		wsDataHandler, err = bitmart.NewWebSocketDataHandler(logger, cfg.WebSocket)
+	case xt.Name:
+		wsDataHandler, err = xt.NewWebSocketDataHandler(logger, cfg.WebSocket)
 	default:
 		return nil, fmt.Errorf("unknown provider: %s", cfg.Name)
 	}

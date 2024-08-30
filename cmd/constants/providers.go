@@ -33,6 +33,7 @@ import (
 	"github.com/skip-mev/slinky/providers/websockets/kucoin"
 	"github.com/skip-mev/slinky/providers/websockets/mexc"
 	"github.com/skip-mev/slinky/providers/websockets/okx"
+	"github.com/skip-mev/slinky/providers/websockets/xt"
 	mmtypes "github.com/skip-mev/slinky/service/clients/marketmap/types"
 )
 
@@ -173,6 +174,11 @@ var (
 		{
 			Name:      bitmart.Name,
 			WebSocket: bitmart.DefaultWebSocketConfig,
+			Type:      types.ConfigType,
+		},
+		{
+			Name:      xt.Name,
+			WebSocket: xt.DefaultWebSocketConfig,
 			Type:      types.ConfigType,
 		},
 
