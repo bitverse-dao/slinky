@@ -1,9 +1,12 @@
-package bitmart
+package xt
 
 import (
 	"encoding/json"
 	"fmt"
 	"math"
+	"strconv"
+	"strings"
+	"time"
 
 	slinkymath "github.com/skip-mev/slinky/pkg/math"
 	"github.com/skip-mev/slinky/providers/base/websocket/handlers"
@@ -31,17 +34,13 @@ const (
 const (
 	// TickersChannel is the channel for tickers. This includes the spot price of the instrument.
 	//
-	TickersChannel Channel = "spot/ticker"
+	TickersChannel Channel = "ticker"
 )
 
 const (
 	// EventSubscribe is the event denoting that we have successfully subscribed to a channel.
 	EventSubscribe EventType = "subscribe"
 	// EventTickers is the event for tickers. By default, this field will not be populated
-	// in a properly formatted message. So we set the default value to an empty string.
-	EventTickers EventType = ""
-	// EventError is the event for an error.
-	EventError EventType = "error"
 )
 
 // BaseMessage is utilized to determine the type of message that was received.
@@ -51,60 +50,56 @@ type BaseMessage struct {
 }
 
 type SubscribeRequestMessage struct {
-	// Operation is the operation to perform.
-	Operation string `json:"op" validate:"required"`
-
-	// Arguments is the list of arguments for the operation.
-	Arguments []string `json:"args" validate:"required"`
+	ID     string   `json:"id" validate:"required"`
+	Method string   `json:"method" validate:"required"`
+	Params []string `json:"params" validate:"required"`
 }
 
-// NewSubscribeToTickersRequestMessage returns a new SubscribeRequestMessage for subscribing
-// to the tickers channel.
-func (h *WebSocketHandler) NewSubscribeToTickersRequestMessage(
-	instruments []string,
-) ([]handlers.WebsocketEncodedMessage, error) {
-	numInstruments := len(instruments)
-	if numInstruments == 0 {
-		return nil, fmt.Errorf("instruments cannot be empty")
+// NewSubscribeRequest returns a new SubscribeRequest encoded message for the given symbols.
+func (h *WebSocketHandler) NewSubscribeRequest(symbols []string) ([]handlers.WebsocketEncodedMessage, error) {
+	numSymbols := len(symbols)
+	if numSymbols == 0 {
+		return nil, fmt.Errorf("cannot attach payload of 0 length")
 	}
-	numBatches := int(math.Ceil(float64(numInstruments) / float64(h.ws.MaxSubscriptionsPerBatch)))
+
+	numBatches := int(math.Ceil(float64(numSymbols) / float64(h.ws.MaxSubscriptionsPerBatch)))
 	msgs := make([]handlers.WebsocketEncodedMessage, numBatches)
 	for i := 0; i < numBatches; i++ {
-		// Get the instruments for this batch.
+		// Get the symbols for the batch.
 		start := i * h.ws.MaxSubscriptionsPerBatch
-		end := slinkymath.Min((i+1)*h.ws.MaxSubscriptionsPerBatch, numInstruments)
-		batch := instruments[start:end]
-		args := make([]string, 0)
-		for _, instrument := range batch {
-			args = append(args, fmt.Sprintf("%s:%s", string(TickersChannel), instrument))
+		end := slinkymath.Min((i+1)*h.ws.MaxSubscriptionsPerBatch, numSymbols)
+		batch := symbols[start:end]
+		params := make([]string, 0)
+		for _, b := range batch {
+			// ticker@btc_usdt
+			params = append(params, fmt.Sprintf("%s@%s", string(TickersChannel), strings.ToLower(b)))
 		}
-
-		bz, err := json.Marshal(
-			SubscribeRequestMessage{
-				Operation: string(OperationSubscribe),
-				Arguments: args,
-			},
-		)
+		bz, err := json.Marshal(SubscribeRequestMessage{
+			Method: string(OperationSubscribe),
+			ID:     strconv.Itoa(time.Now().UTC().Second()),
+			Params: params,
+		})
 		if err != nil {
 			return msgs, err
 		}
 		msgs[i] = bz
 	}
-
 	return msgs, nil
 }
 
 type SubscribeResponseMessage struct {
-	// Event is the event that occurred.
-	Event string `json:"event" validate:"required"`
-	Topic string `json:"topic" validate:"required"`
+	ID int `json:"id,omitempty"`
 
-	ErrorCode    string `json:"errorCode" `
-	ErrorMessage string `json:"errorMessage"`
+	// Code is the error code.
+	Code int `json:"code,omitempty"`
+
+	// Message is the error message. Note that the field will be populated with the same exact
+	// initial message that was sent to the websocket.
+	Message string `json:"msg,omitempty"`
 }
 
 type TickersResponseMessage struct {
-	Table string `json:"table" validate:"required"`
+	Topic string `json:"topic"`
 	// Data is the list of index ticker data.
 	Data []IndexTicker `json:"data" validate:"required"`
 }
@@ -112,8 +107,8 @@ type TickersResponseMessage struct {
 // IndexTicker is the index ticker data.
 type IndexTicker struct {
 	// ID is the instrument ID.
-	Symbol string `json:"symbol" validate:"required"`
+	Symbol string `json:"s" validate:"required"`
 
 	// LastPrice is the last price.
-	LastPrice string `json:"last_price" validate:"required"`
+	LastPrice string `json:"c" validate:"required"`
 }
