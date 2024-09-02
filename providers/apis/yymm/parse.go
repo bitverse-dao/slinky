@@ -3,6 +3,11 @@ package yymm
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/skip-mev/slinky/providers/apis/bingx"
+	"github.com/skip-mev/slinky/providers/apis/coinex"
+	"github.com/skip-mev/slinky/providers/websockets/bitget"
+	"github.com/skip-mev/slinky/providers/websockets/bitmart"
+	"github.com/skip-mev/slinky/providers/websockets/xt"
 	"strings"
 
 	yymmtypes "github.com/skip-mev/slinky/providers/apis/yymm/types"
@@ -45,6 +50,11 @@ var ProviderMapping = map[string]string{
 	"Okx":                  okx.Name,
 	"Mexc":                 mexc.Name,
 	"CoinbasePro":          coinbase.Name,
+	"Bitget":               bitget.Name,
+	"Bingx":                bingx.Name,
+	"Coinex":               coinex.Name,
+	"Bitmart":              bitmart.Name,
+	"Xt":                   xt.Name,
 	"TestVolatileExchange": volatile.Name,
 	"Raydium":              raydium.Name,
 	"UniswapV3-Ethereum":   uniswapv3.ProviderNames[constants.ETHEREUM],
