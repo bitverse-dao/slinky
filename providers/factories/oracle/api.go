@@ -3,9 +3,10 @@ package oracle
 import (
 	"context"
 	"fmt"
-	bitmartapi "github.com/skip-mev/slinky/providers/apis/bitmart"
 	"net/http"
 	"strings"
+
+	bitmartapi "github.com/skip-mev/slinky/providers/apis/bitmart"
 
 	"github.com/skip-mev/slinky/providers/apis/bingx"
 	"github.com/skip-mev/slinky/providers/apis/coinex"

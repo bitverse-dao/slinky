@@ -40,6 +40,10 @@ func DefaultOracleConfig() config.OracleConfig {
 		Metrics: config.MetricsConfig{
 			PrometheusServerAddress: DefaultPrometheusServerAddress,
 			Enabled:                 DefaultMetricsEnabled,
+			Telemetry: config.TelemetryConfig{
+				Disabled:    true,
+				PushAddress: "",
+			},
 		},
 		Providers: make(map[string]config.ProviderConfig),
 		Host:      DefaultHost,
