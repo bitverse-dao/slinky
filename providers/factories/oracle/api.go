@@ -3,6 +3,7 @@ package oracle
 import (
 	"context"
 	"fmt"
+	"github.com/skip-mev/slinky/providers/apis/bingx"
 	"net/http"
 	"strings"
 
@@ -98,6 +99,8 @@ func APIQueryHandlerFactory(
 		apiPriceFetcher, err = osmosis.NewAPIPriceFetcher(logger, cfg.API, metrics)
 	case providerName == polymarket.Name:
 		apiDataHandler, err = polymarket.NewAPIHandler(cfg.API)
+	case providerName == bingx.Name:
+		apiDataHandler, err = bingx.NewAPIHandler(cfg.API)
 	default:
 		return nil, fmt.Errorf("unknown provider: %s", cfg.Name)
 	}
