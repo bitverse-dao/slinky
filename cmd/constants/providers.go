@@ -5,6 +5,8 @@ import (
 	"github.com/skip-mev/connect/v2/oracle/constants"
 	"github.com/skip-mev/connect/v2/oracle/types"
 	binanceapi "github.com/skip-mev/connect/v2/providers/apis/binance"
+	"github.com/skip-mev/connect/v2/providers/apis/bingx"
+	bingxapi "github.com/skip-mev/connect/v2/providers/apis/bingx"
 	bitstampapi "github.com/skip-mev/connect/v2/providers/apis/bitstamp"
 	coinbaseapi "github.com/skip-mev/connect/v2/providers/apis/coinbase"
 	"github.com/skip-mev/connect/v2/providers/apis/coingecko"
@@ -90,6 +92,11 @@ var (
 		{
 			Name: krakenapi.Name,
 			API:  krakenapi.DefaultAPIConfig,
+			Type: types.ConfigType,
+		},
+		{
+			Name: bingx.Name,
+			API:  bingxapi.DefaultAPIConfig,
 			Type: types.ConfigType,
 		},
 		{
