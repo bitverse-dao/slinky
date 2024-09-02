@@ -3,10 +3,12 @@ package oracle
 import (
 	"context"
 	"fmt"
-	"github.com/skip-mev/slinky/providers/apis/bingx"
-	"github.com/skip-mev/slinky/providers/apis/coinex"
 	"net/http"
 	"strings"
+
+	"github.com/skip-mev/slinky/providers/apis/bingx"
+	"github.com/skip-mev/slinky/providers/apis/coinex"
+	"github.com/skip-mev/slinky/providers/apis/xt"
 
 	"go.uber.org/zap"
 
@@ -104,6 +106,8 @@ func APIQueryHandlerFactory(
 		apiDataHandler, err = bingx.NewAPIHandler(cfg.API)
 	case providerName == coinex.Name:
 		apiDataHandler, err = coinex.NewAPIHandler(cfg.API)
+	case providerName == xt.Name:
+		apiDataHandler, err = xt.NewAPIHandler(cfg.API)
 	default:
 		return nil, fmt.Errorf("unknown provider: %s", cfg.Name)
 	}
