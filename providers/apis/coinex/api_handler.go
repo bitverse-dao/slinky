@@ -3,10 +3,11 @@ package coinex
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/skip-mev/slinky/pkg/math"
-	providertypes "github.com/skip-mev/slinky/providers/types"
 	"net/http"
 	"time"
+
+	"github.com/skip-mev/slinky/pkg/math"
+	providertypes "github.com/skip-mev/slinky/providers/types"
 
 	"github.com/skip-mev/slinky/oracle/config"
 	"github.com/skip-mev/slinky/oracle/types"
