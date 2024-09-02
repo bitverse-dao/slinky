@@ -3,13 +3,13 @@ package oracle
 import (
 	"context"
 	"fmt"
-	bitmartapi "github.com/skip-mev/slinky/providers/apis/bitmart"
+	bitmartapi "github.com/skip-mev/connect/v2/providers/apis/bitmart"
 	"net/http"
 	"strings"
 
-	"github.com/skip-mev/slinky/providers/apis/bingx"
-	"github.com/skip-mev/slinky/providers/apis/coinex"
-	"github.com/skip-mev/slinky/providers/apis/xt"
+	"github.com/skip-mev/connect/v2/providers/apis/bingx"
+	"github.com/skip-mev/connect/v2/providers/apis/coinex"
+	"github.com/skip-mev/connect/v2/providers/apis/xt"
 
 	"go.uber.org/zap"
 
