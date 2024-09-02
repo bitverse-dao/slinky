@@ -18,6 +18,7 @@ import (
 	krakenapi "github.com/skip-mev/connect/v2/providers/apis/kraken"
 	"github.com/skip-mev/connect/v2/providers/apis/marketmap"
 	"github.com/skip-mev/connect/v2/providers/apis/polymarket"
+	xtapi "github.com/skip-mev/connect/v2/providers/apis/xt"
 	"github.com/skip-mev/connect/v2/providers/apis/yymm"
 	"github.com/skip-mev/connect/v2/providers/volatile"
 	binancews "github.com/skip-mev/connect/v2/providers/websockets/binance"
@@ -35,7 +36,6 @@ import (
 	"github.com/skip-mev/connect/v2/providers/websockets/kucoin"
 	"github.com/skip-mev/connect/v2/providers/websockets/mexc"
 	"github.com/skip-mev/connect/v2/providers/websockets/okx"
-	"github.com/skip-mev/connect/v2/providers/websockets/xt"
 	mmtypes "github.com/skip-mev/connect/v2/service/clients/marketmap/types"
 )
 
@@ -102,6 +102,11 @@ var (
 		{
 			Name: coinexapi.Name,
 			API:  coinexapi.DefaultAPIConfig,
+			Type: types.ConfigType,
+		},
+		{
+			Name: xtapi.Name,
+			API:  xtapi.DefaultAPIConfig,
 			Type: types.ConfigType,
 		},
 		{
@@ -186,11 +191,6 @@ var (
 		{
 			Name:      bitmart.Name,
 			WebSocket: bitmart.DefaultWebSocketConfig,
-			Type:      types.ConfigType,
-		},
-		{
-			Name:      xt.Name,
-			WebSocket: xt.DefaultWebSocketConfig,
 			Type:      types.ConfigType,
 		},
 
