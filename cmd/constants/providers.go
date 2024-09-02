@@ -5,10 +5,10 @@ import (
 	"github.com/skip-mev/slinky/oracle/constants"
 	"github.com/skip-mev/slinky/oracle/types"
 	binanceapi "github.com/skip-mev/slinky/providers/apis/binance"
-	"github.com/skip-mev/slinky/providers/apis/bingx"
 	bingxapi "github.com/skip-mev/slinky/providers/apis/bingx"
 	bitstampapi "github.com/skip-mev/slinky/providers/apis/bitstamp"
 	coinbaseapi "github.com/skip-mev/slinky/providers/apis/coinbase"
+	coinexapi "github.com/skip-mev/slinky/providers/apis/coinex"
 	"github.com/skip-mev/slinky/providers/apis/coingecko"
 	"github.com/skip-mev/slinky/providers/apis/coinmarketcap"
 	"github.com/skip-mev/slinky/providers/apis/defi/osmosis"
@@ -95,8 +95,13 @@ var (
 			Type: types.ConfigType,
 		},
 		{
-			Name: bingx.Name,
+			Name: bingxapi.Name,
 			API:  bingxapi.DefaultAPIConfig,
+			Type: types.ConfigType,
+		},
+		{
+			Name: coinexapi.Name,
+			API:  coinexapi.DefaultAPIConfig,
 			Type: types.ConfigType,
 		},
 		{

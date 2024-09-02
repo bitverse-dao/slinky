@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/skip-mev/slinky/providers/apis/bingx"
+	"github.com/skip-mev/slinky/providers/apis/coinex"
 	"net/http"
 	"strings"
 
@@ -101,6 +102,8 @@ func APIQueryHandlerFactory(
 		apiDataHandler, err = polymarket.NewAPIHandler(cfg.API)
 	case providerName == bingx.Name:
 		apiDataHandler, err = bingx.NewAPIHandler(cfg.API)
+	case providerName == coinex.Name:
+		apiDataHandler, err = coinex.NewAPIHandler(cfg.API)
 	default:
 		return nil, fmt.Errorf("unknown provider: %s", cfg.Name)
 	}
