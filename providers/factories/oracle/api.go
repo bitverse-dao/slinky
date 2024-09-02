@@ -3,6 +3,7 @@ package oracle
 import (
 	"context"
 	"fmt"
+	bitmartapi "github.com/skip-mev/slinky/providers/apis/bitmart"
 	"net/http"
 	"strings"
 
@@ -108,6 +109,8 @@ func APIQueryHandlerFactory(
 		apiDataHandler, err = coinex.NewAPIHandler(cfg.API)
 	case providerName == xt.Name:
 		apiDataHandler, err = xt.NewAPIHandler(cfg.API)
+	case providerName == bitmartapi.Name:
+		apiDataHandler, err = bitmartapi.NewAPIHandler(cfg.API)
 	default:
 		return nil, fmt.Errorf("unknown provider: %s", cfg.Name)
 	}

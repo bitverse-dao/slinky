@@ -6,10 +6,10 @@ import (
 	"strings"
 
 	"github.com/skip-mev/slinky/providers/apis/bingx"
+	"github.com/skip-mev/slinky/providers/apis/bitmart"
 	"github.com/skip-mev/slinky/providers/apis/coinex"
 	"github.com/skip-mev/slinky/providers/apis/xt"
 	"github.com/skip-mev/slinky/providers/websockets/bitget"
-	"github.com/skip-mev/slinky/providers/websockets/bitmart"
 
 	yymmtypes "github.com/skip-mev/slinky/providers/apis/yymm/types"
 	"github.com/skip-mev/slinky/providers/websockets/bitverse"

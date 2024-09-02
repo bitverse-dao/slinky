@@ -6,6 +6,7 @@ import (
 	"github.com/skip-mev/connect/v2/oracle/types"
 	binanceapi "github.com/skip-mev/connect/v2/providers/apis/binance"
 	bingxapi "github.com/skip-mev/connect/v2/providers/apis/bingx"
+	bitmartapi "github.com/skip-mev/connect/v2/providers/apis/bitmart"
 	bitstampapi "github.com/skip-mev/connect/v2/providers/apis/bitstamp"
 	coinbaseapi "github.com/skip-mev/connect/v2/providers/apis/coinbase"
 	coinexapi "github.com/skip-mev/connect/v2/providers/apis/coinex"
@@ -107,6 +108,11 @@ var (
 		{
 			Name: xtapi.Name,
 			API:  xtapi.DefaultAPIConfig,
+			Type: types.ConfigType,
+		},
+		{
+			Name: bitmartapi.Name,
+			API:  bitmartapi.DefaultAPIConfig,
 			Type: types.ConfigType,
 		},
 		{
