@@ -3,6 +3,7 @@ package yymm
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/skip-mev/slinky/providers/apis/jupiter"
 	"strings"
 
 	"github.com/skip-mev/connect/v2/providers/apis/bingx"
@@ -56,6 +57,7 @@ var ProviderMapping = map[string]string{
 	"Coinex":               coinex.Name,
 	"Bitmart":              bitmart.Name,
 	"Xt":                   xt.Name,
+	"Jupiter":              jupiter.Name,
 	"TestVolatileExchange": volatile.Name,
 	"Raydium":              raydium.Name,
 	"UniswapV3-Ethereum":   uniswapv3.ProviderNames[constants.ETHEREUM],

@@ -111,6 +111,8 @@ func APIQueryHandlerFactory(
 		apiDataHandler, err = xt.NewAPIHandler(cfg.API)
 	case providerName == bitmartapi.Name:
 		apiDataHandler, err = bitmartapi.NewAPIHandler(cfg.API)
+	case providerName == jupiter.Name:
+		apiDataHandler, err = jupiter.NewAPIHandler(cfg.API)
 	default:
 		return nil, fmt.Errorf("unknown provider: %s", cfg.Name)
 	}

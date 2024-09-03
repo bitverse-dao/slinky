@@ -16,6 +16,7 @@ import (
 	"github.com/skip-mev/connect/v2/providers/apis/defi/raydium"
 	"github.com/skip-mev/connect/v2/providers/apis/defi/uniswapv3"
 	"github.com/skip-mev/connect/v2/providers/apis/dydx"
+	jupiterapi "github.com/skip-mev/connect/v2/providers/apis/jupiter"
 	krakenapi "github.com/skip-mev/connect/v2/providers/apis/kraken"
 	"github.com/skip-mev/connect/v2/providers/apis/marketmap"
 	"github.com/skip-mev/connect/v2/providers/apis/polymarket"
@@ -113,6 +114,11 @@ var (
 		{
 			Name: bitmartapi.Name,
 			API:  bitmartapi.DefaultAPIConfig,
+			Type: types.ConfigType,
+		},
+		{
+			Name: jupiterapi.Name,
+			API:  jupiterapi.DefaultAPIConfig,
 			Type: types.ConfigType,
 		},
 		{
