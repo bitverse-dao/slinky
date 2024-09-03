@@ -3,6 +3,7 @@ package osmosis
 import (
 	"encoding/json"
 	"fmt"
+	"math/big"
 	"strconv"
 	"strings"
 	"sync"
@@ -89,6 +90,10 @@ type TickerMetadata struct {
 
 	// QuoteTokenDenom is the identifier (on osmosis) of the quote token.
 	QuoteTokenDenom string `json:"quote_token_denom"`
+
+	BaseDecimals int64 `json:"base_decimals"`
+
+	QuoteDecimals int64 `json:"quote_decimals"`
 }
 
 // ValidateBasic checks that the pool and token information is formatted properly.
@@ -96,7 +101,12 @@ func (metadata TickerMetadata) ValidateBasic() error {
 	if metadata.BaseTokenDenom == "" || metadata.QuoteTokenDenom == "" {
 		return fmt.Errorf("base token denom or quote token denom cannot be empty")
 	}
-
+	if metadata.BaseDecimals < 0 {
+		return fmt.Errorf("base decimals must be non-negative")
+	}
+	if metadata.QuoteDecimals < 0 {
+		return fmt.Errorf("quote decimals must be non-negative")
+	}
 	return nil
 }
 
@@ -132,6 +142,20 @@ var DefaultAPIConfig = config.APIConfig{
 
 type SpotPriceResponse struct {
 	SpotPrice string `json:"spot_price"`
+}
+
+// ScalePrice scales the price to the desired ticker decimals. The price is normalized to
+// the token decimals in the erc20 token contracts.
+func ScalePrice(
+	metadata TickerMetadata,
+	price *big.Float,
+) *big.Float {
+	// Adjust the price based on the difference between the token decimals in the erc20 token contracts.
+	erc20ScalingFactor := math.GetScalingFactor(
+		metadata.BaseDecimals,
+		metadata.QuoteDecimals,
+	)
+	return new(big.Float).Mul(price, erc20ScalingFactor)
 }
 
 type WrappedSpotPriceResponse struct {

@@ -4,9 +4,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stretchr/testify/require"
-
 	"github.com/skip-mev/connect/v2/providers/apis/defi/types"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestBlockAgeChecker_IsHeightValid(t *testing.T) {

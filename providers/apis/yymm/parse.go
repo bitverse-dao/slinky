@@ -5,34 +5,34 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/skip-mev/slinky/providers/apis/bingx"
-	"github.com/skip-mev/slinky/providers/apis/bitmart"
-	"github.com/skip-mev/slinky/providers/apis/coinex"
-	"github.com/skip-mev/slinky/providers/apis/xt"
-	"github.com/skip-mev/slinky/providers/websockets/bitget"
+	"github.com/skip-mev/connect/v2/providers/apis/bingx"
+	"github.com/skip-mev/connect/v2/providers/apis/bitmart"
+	"github.com/skip-mev/connect/v2/providers/apis/coinex"
+	"github.com/skip-mev/connect/v2/providers/apis/xt"
+	"github.com/skip-mev/connect/v2/providers/websockets/bitget"
 
-	yymmtypes "github.com/skip-mev/slinky/providers/apis/yymm/types"
-	"github.com/skip-mev/slinky/providers/websockets/bitverse"
+	yymmtypes "github.com/skip-mev/connect/v2/providers/apis/yymm/types"
+	"github.com/skip-mev/connect/v2/providers/websockets/bitverse"
 
-	"github.com/skip-mev/slinky/oracle/constants"
-	slinkytypes "github.com/skip-mev/slinky/pkg/types"
-	"github.com/skip-mev/slinky/providers/apis/bitstamp"
-	"github.com/skip-mev/slinky/providers/apis/coinmarketcap"
-	"github.com/skip-mev/slinky/providers/apis/defi/raydium"
-	"github.com/skip-mev/slinky/providers/apis/defi/uniswapv3"
-	"github.com/skip-mev/slinky/providers/apis/kraken"
-	"github.com/skip-mev/slinky/providers/volatile"
-	"github.com/skip-mev/slinky/providers/websockets/binance"
-	"github.com/skip-mev/slinky/providers/websockets/bitfinex"
-	"github.com/skip-mev/slinky/providers/websockets/bybit"
-	"github.com/skip-mev/slinky/providers/websockets/coinbase"
-	"github.com/skip-mev/slinky/providers/websockets/cryptodotcom"
-	"github.com/skip-mev/slinky/providers/websockets/gate"
-	"github.com/skip-mev/slinky/providers/websockets/huobi"
-	"github.com/skip-mev/slinky/providers/websockets/kucoin"
-	"github.com/skip-mev/slinky/providers/websockets/mexc"
-	"github.com/skip-mev/slinky/providers/websockets/okx"
-	mmtypes "github.com/skip-mev/slinky/x/marketmap/types"
+	"github.com/skip-mev/connect/v2/oracle/constants"
+	slinkytypes "github.com/skip-mev/connect/v2/pkg/types"
+	"github.com/skip-mev/connect/v2/providers/apis/bitstamp"
+	"github.com/skip-mev/connect/v2/providers/apis/coinmarketcap"
+	"github.com/skip-mev/connect/v2/providers/apis/defi/raydium"
+	"github.com/skip-mev/connect/v2/providers/apis/defi/uniswapv3"
+	"github.com/skip-mev/connect/v2/providers/apis/kraken"
+	"github.com/skip-mev/connect/v2/providers/volatile"
+	"github.com/skip-mev/connect/v2/providers/websockets/binance"
+	"github.com/skip-mev/connect/v2/providers/websockets/bitfinex"
+	"github.com/skip-mev/connect/v2/providers/websockets/bybit"
+	"github.com/skip-mev/connect/v2/providers/websockets/coinbase"
+	"github.com/skip-mev/connect/v2/providers/websockets/cryptodotcom"
+	"github.com/skip-mev/connect/v2/providers/websockets/gate"
+	"github.com/skip-mev/connect/v2/providers/websockets/huobi"
+	"github.com/skip-mev/connect/v2/providers/websockets/kucoin"
+	"github.com/skip-mev/connect/v2/providers/websockets/mexc"
+	"github.com/skip-mev/connect/v2/providers/websockets/okx"
+	mmtypes "github.com/skip-mev/connect/v2/x/marketmap/types"
 )
 
 // ProviderMapping is referencing the different providers that are supported by the yymm market params.
@@ -60,6 +60,7 @@ var ProviderMapping = map[string]string{
 	"Raydium":              raydium.Name,
 	"UniswapV3-Ethereum":   uniswapv3.ProviderNames[constants.ETHEREUM],
 	"UniswapV3-Base":       uniswapv3.ProviderNames[constants.BASE],
+	"Osmosis":              osmosis.Name,
 	coinmarketcap.Name:     coinmarketcap.Name,
 }
 
@@ -202,6 +203,8 @@ func ExtractMetadata(providerName string, cfg yymmtypes.ExchangeMarketConfigJson
 		return UniswapV3MetadataFromTicker(cfg.Ticker, cfg.Invert)
 	case providerName == raydium.Name:
 		return RaydiumMetadataFromTicker(cfg.Ticker)
+	case providerName == osmosis.Name:
+		return OsmosisMetadataFromTicker(cfg.Ticker)
 	}
 	return "", nil
 }
