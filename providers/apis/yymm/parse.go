@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/skip-mev/slinky/providers/apis/defi/osmosis"
+
 	"github.com/skip-mev/slinky/providers/apis/bingx"
 	"github.com/skip-mev/slinky/providers/apis/bitmart"
 	"github.com/skip-mev/slinky/providers/apis/coinex"
@@ -60,6 +62,7 @@ var ProviderMapping = map[string]string{
 	"Raydium":              raydium.Name,
 	"UniswapV3-Ethereum":   uniswapv3.ProviderNames[constants.ETHEREUM],
 	"UniswapV3-Base":       uniswapv3.ProviderNames[constants.BASE],
+	"Osmosis":              osmosis.Name,
 	coinmarketcap.Name:     coinmarketcap.Name,
 }
 
@@ -202,6 +205,8 @@ func ExtractMetadata(providerName string, cfg yymmtypes.ExchangeMarketConfigJson
 		return UniswapV3MetadataFromTicker(cfg.Ticker, cfg.Invert)
 	case providerName == raydium.Name:
 		return RaydiumMetadataFromTicker(cfg.Ticker)
+	case providerName == osmosis.Name:
+		return OsmosisMetadataFromTicker(cfg.Ticker)
 	}
 	return "", nil
 }

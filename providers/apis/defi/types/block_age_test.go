@@ -1,9 +1,10 @@
 package types_test
 
 import (
-	"github.com/skip-mev/slinky/providers/apis/defi/types"
 	"testing"
 	"time"
+
+	"github.com/skip-mev/slinky/providers/apis/defi/types"
 
 	"github.com/stretchr/testify/require"
 )

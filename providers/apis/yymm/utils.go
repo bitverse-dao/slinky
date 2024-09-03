@@ -7,11 +7,13 @@ import (
 	"strings"
 	"time"
 
+	"github.com/skip-mev/slinky/providers/apis/defi/osmosis"
+	"github.com/skip-mev/slinky/providers/apis/defi/uniswapv3"
+
 	"github.com/gagliardetto/solana-go"
 
 	"github.com/skip-mev/slinky/oracle/config"
 	"github.com/skip-mev/slinky/providers/apis/defi/raydium"
-	"github.com/skip-mev/slinky/providers/apis/defi/uniswapv3"
 )
 
 const (
@@ -47,6 +49,10 @@ const (
 
 	// RaydiumTickerSeparator is the separator for fields contained within a ticker for the raydium provider.
 	RaydiumTickerSeparator = Delimiter
+
+	OsmosisTickerFields = 5
+
+	OsmosisTickerSeparator = Delimiter
 )
 
 // DefaultAPIConfig returns the default configuration for the yymm market map API.
@@ -148,6 +154,47 @@ func UniswapV3MetadataFromTicker(ticker string, invert bool) (string, error) {
 	}
 
 	cfgBytes, err := json.Marshal(parsedConfig)
+	if err != nil {
+		return "", err
+	}
+
+	return string(cfgBytes), nil
+}
+
+// OsmosisMetadataFromTicker returns the metadataJSON string for osmosis_api according to the yymm encoding.
+// This is PoolID-BaseToken-DecimalsBase-QuoteTokenDenom-DecimalsQuote.
+func OsmosisMetadataFromTicker(ticker string) (string, error) {
+	fields := strings.Split(ticker, OsmosisTickerSeparator)
+	if len(fields) != OsmosisTickerFields {
+		return "", fmt.Errorf("expected %d fields, got %d", OsmosisTickerFields, len(fields))
+	}
+	poolID, err := strconv.ParseUint(fields[0], 10, 64)
+	if err != nil {
+		return "", fmt.Errorf("failed to parse pool Id: %w", err)
+	}
+
+	baseDecimals, err := strconv.ParseInt(fields[2], 10, 64)
+	if err != nil {
+		return "", fmt.Errorf("failed to parse base decimals: %w", err)
+	}
+
+	quoteDecimals, err := strconv.ParseInt(fields[4], 10, 64)
+	if err != nil {
+		return "", fmt.Errorf("failed to parse quote decimals: %w", err)
+	}
+
+	tickerMetadata := osmosis.TickerMetadata{
+		PoolID:          poolID,
+		BaseTokenDenom:  fields[1],
+		QuoteTokenDenom: fields[3],
+		BaseDecimals:    baseDecimals,
+		QuoteDecimals:   quoteDecimals,
+	}
+	if err = tickerMetadata.ValidateBasic(); err != nil {
+		return "", err
+	}
+
+	cfgBytes, err := json.Marshal(tickerMetadata)
 	if err != nil {
 		return "", err
 	}

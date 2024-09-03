@@ -191,8 +191,10 @@ func (pf *APIPriceFetcher) Fetch(
 
 				return nil
 			}
+			// Scale the price to the respective token decimals.
+			scaledPrice := ScalePrice(metadata, price)
 
-			resolvedTickerCallback(ticker, price)
+			resolvedTickerCallback(ticker, scaledPrice)
 
 			return nil
 		})
