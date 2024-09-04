@@ -64,6 +64,11 @@ var (
 			API:  osmosis.DefaultAPIConfig,
 			Type: types.ConfigType,
 		},
+		{
+			Name: pancakeswap.Name,
+			API:  pancakeswap.DefaultAPIConfig,
+			Type: types.ConfigType,
+		},
 
 		// Exchange API providers
 		{

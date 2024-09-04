@@ -1,9 +1,9 @@
-package uniswapv3
+package pancakeswap
 
 import (
 	"math/big"
 
-	"github.com/skip-mev/connect/v2/pkg/math"
+	"github.com/skip-mev/slinky/pkg/math"
 )
 
 // ConvertSquareRootX96Price converts the slot 0 sqrtPriceX96 value to a price. Note that this
@@ -16,7 +16,7 @@ func ConvertSquareRootX96Price(
 	// Convert the original sqrtPriceX96 to a big float to retain precision when dividing.
 	sqrtPriceX96Float := new(big.Float).SetInt(sqrtPriceX96)
 
-	// x96Float is the fixed-point precision for Uniswap V3 prices. This is equal to 2^96.
+	// x96Float is the fixed-point precision for panckeswap V3 prices. This is equal to 2^96.
 	x96Float := new(big.Float).SetInt(
 		new(big.Int).Exp(big.NewInt(2), big.NewInt(96), nil),
 	)
@@ -43,6 +43,7 @@ func ScalePrice(
 	// Invert the price if the configuration specifies to do so.
 	if cfg.Invert {
 		return new(big.Float).Quo(price, erc20ScalingFactor)
+		//		return new(big.Float).Quo(big.NewFloat(1), scaledERC20AdjustedPrice)
 	}
 	return new(big.Float).Mul(price, erc20ScalingFactor)
 }
