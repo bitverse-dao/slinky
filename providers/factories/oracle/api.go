@@ -3,6 +3,7 @@ package oracle
 import (
 	"context"
 	"fmt"
+	"github.com/skip-mev/slinky/providers/apis/defi/pancakeswap"
 	"github.com/skip-mev/slinky/providers/apis/jupiter"
 	"net/http"
 	"strings"
@@ -103,6 +104,8 @@ func APIQueryHandlerFactory(
 		apiPriceFetcher, err = raydium.NewAPIPriceFetcher(logger, cfg.API, metrics)
 	case providerName == osmosis.Name:
 		apiPriceFetcher, err = osmosis.NewAPIPriceFetcher(logger, cfg.API, metrics)
+	case providerName == pancakeswap.Name:
+		apiPriceFetcher, err = pancakeswap.NewPriceFetcher(ctx, logger, metrics, cfg.API)
 	case providerName == polymarket.Name:
 		apiDataHandler, err = polymarket.NewAPIHandler(cfg.API)
 	case providerName == bingx.Name:

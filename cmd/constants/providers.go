@@ -13,6 +13,7 @@ import (
 	"github.com/skip-mev/slinky/providers/apis/coingecko"
 	"github.com/skip-mev/slinky/providers/apis/coinmarketcap"
 	"github.com/skip-mev/slinky/providers/apis/defi/osmosis"
+	"github.com/skip-mev/slinky/providers/apis/defi/pancakeswap"
 	"github.com/skip-mev/slinky/providers/apis/defi/raydium"
 	"github.com/skip-mev/slinky/providers/apis/defi/uniswapv3"
 	"github.com/skip-mev/slinky/providers/apis/dydx"
@@ -62,6 +63,11 @@ var (
 		{
 			Name: osmosis.Name,
 			API:  osmosis.DefaultAPIConfig,
+			Type: types.ConfigType,
+		},
+		{
+			Name: pancakeswap.Name,
+			API:  pancakeswap.DefaultAPIConfig,
 			Type: types.ConfigType,
 		},
 

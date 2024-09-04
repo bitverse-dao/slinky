@@ -3,6 +3,7 @@ package yymm
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/skip-mev/slinky/providers/apis/defi/pancakeswap"
 	"github.com/skip-mev/slinky/providers/apis/jupiter"
 	"strings"
 
@@ -65,6 +66,7 @@ var ProviderMapping = map[string]string{
 	"UniswapV3-Ethereum":   uniswapv3.ProviderNames[constants.ETHEREUM],
 	"UniswapV3-Base":       uniswapv3.ProviderNames[constants.BASE],
 	"Osmosis":              osmosis.Name,
+	"Pancakeswap":          pancakeswap.Name,
 	coinmarketcap.Name:     coinmarketcap.Name,
 }
 
@@ -209,6 +211,8 @@ func ExtractMetadata(providerName string, cfg yymmtypes.ExchangeMarketConfigJson
 		return RaydiumMetadataFromTicker(cfg.Ticker)
 	case providerName == osmosis.Name:
 		return OsmosisMetadataFromTicker(cfg.Ticker)
+	case strings.HasPrefix(providerName, pancakeswap.Name):
+		return PancakeswapMetadataFromTicker(cfg.Ticker, cfg.Invert)
 	}
 	return "", nil
 }

@@ -3,6 +3,7 @@ package yymm
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/skip-mev/slinky/providers/apis/defi/pancakeswap"
 	"strconv"
 	"strings"
 	"time"
@@ -53,6 +54,12 @@ const (
 	OsmosisTickerFields = 5
 
 	OsmosisTickerSeparator = Delimiter
+
+	// PancakeTickerFields is the number of fields to expect to parse from a UniswapV3 ticker.
+	PancakeTickerFields = 3
+
+	// PancakeTickerSeparator is the separator for fields contained within a ticker for a uniswapv3_api provider.
+	PancakeTickerSeparator = Delimiter
 )
 
 // DefaultAPIConfig returns the default configuration for the yymm market map API.
@@ -143,6 +150,43 @@ func UniswapV3MetadataFromTicker(ticker string, invert bool) (string, error) {
 	}
 
 	parsedConfig := uniswapv3.PoolConfig{
+		Address:       fields[0],
+		BaseDecimals:  baseDecimals,
+		QuoteDecimals: quoteDecimals,
+		Invert:        invert,
+	}
+
+	if err = parsedConfig.ValidateBasic(); err != nil {
+		return "", err
+	}
+
+	cfgBytes, err := json.Marshal(parsedConfig)
+	if err != nil {
+		return "", err
+	}
+
+	return string(cfgBytes), nil
+}
+
+// PancakeswapMetadataFromTicker returns the metadataJSON string for uniswapv3_api according to the yymm encoding.
+// This is PoolAddress-DecimalsBase-DecimalsQuote.
+func PancakeswapMetadataFromTicker(ticker string, invert bool) (string, error) {
+	fields := strings.Split(ticker, PancakeTickerSeparator)
+	if len(fields) != PancakeTickerFields {
+		return "", fmt.Errorf("expected %d fields, got %d", PancakeTickerFields, len(fields))
+	}
+
+	baseDecimals, err := strconv.ParseInt(fields[1], 10, 64)
+	if err != nil {
+		return "", fmt.Errorf("failed to parse base decimals: %w", err)
+	}
+
+	quoteDecimals, err := strconv.ParseInt(fields[2], 10, 64)
+	if err != nil {
+		return "", fmt.Errorf("failed to parse quote decimals: %w", err)
+	}
+
+	parsedConfig := pancakeswap.PoolConfig{
 		Address:       fields[0],
 		BaseDecimals:  baseDecimals,
 		QuoteDecimals: quoteDecimals,
