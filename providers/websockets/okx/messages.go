@@ -32,7 +32,7 @@ const (
 	// TickersChannel is the channel for tickers. This includes the spot price of the instrument.
 	//
 	// ref: https://www.okx.com/docs-v5/en/#order-book-trading-market-data-ws-tickers-channel
-	TickersChannel Channel = "tickers"
+	TickersChannel Channel = "index-tickers"
 )
 
 const (
@@ -213,5 +213,5 @@ type IndexTicker struct {
 	ID string `json:"instId" validate:"required"`
 
 	// LastPrice is the last price.
-	LastPrice string `json:"last" validate:"required"`
+	LastPrice string `json:"idxPx" validate:"required"`
 }
