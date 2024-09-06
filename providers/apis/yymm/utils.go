@@ -85,10 +85,10 @@ var DefaultSwitchOverAPIConfig = config.APIConfig{
 	MaxQueries:       1,
 	Endpoints: []config.Endpoint{
 		{
-			URL: "http://192.168.0.100:1317", // REST endpoint (HTTP/HTTPS prefix)
+			URL: "https://yymm-rest.bitverse.zone", // REST endpoint (HTTP/HTTPS prefix)
 		},
 		{
-			URL: "192.168.0.100:9090", // gRPC endpoint (NO HTTP/HTTPS prefix)
+			URL: "https://yymm-grpc.bitverse.zone", // gRPC endpoint (NO HTTP/HTTPS prefix)
 		},
 	},
 }
