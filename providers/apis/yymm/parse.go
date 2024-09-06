@@ -79,6 +79,9 @@ func ConvertMarketParamsToMarketMap(
 	}
 
 	for _, market := range params.MarketParams {
+		if strings.EqualFold(market.Pair, "BITCOIN-PUPPETS-USD") {
+			continue
+		}
 		ticker, err := CreateTickerFromMarket(market)
 		if err != nil {
 			return mmtypes.MarketMapResponse{}, fmt.Errorf("failed to create ticker from market %s: %w", market.Pair, err)
