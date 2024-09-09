@@ -3,7 +3,6 @@ package ethmulticlient
 import (
 	"context"
 	"fmt"
-	"net/http"
 	"time"
 
 	"github.com/skip-mev/connect/v2/oracle/config"
@@ -62,16 +61,16 @@ func NewGoEthereumClientImpl(
 		return nil, fmt.Errorf("expected endpoint at index %d, got %d endpoints", index, len(api.Endpoints))
 	}
 
-	var opts []rpc.ClientOption
+	// var opts []rpc.ClientOption
 	endpoint := api.Endpoints[index] // pin
-	if endpoint.Authentication.Enabled() {
-		opts = append(opts, rpc.WithHTTPAuth(func(h http.Header) error {
-			h.Set(endpoint.Authentication.APIKeyHeader, endpoint.Authentication.APIKey)
-			return nil
-		}))
-	}
+	//if endpoint.Authentication.Enabled() {
+	//	opts = append(opts, rpc.WithHTTPAuth(func(h http.Header) error {
+	//		h.Set(endpoint.Authentication.APIKeyHeader, endpoint.Authentication.APIKey)
+	//		return nil
+	//	}))
+	//}
 
-	client, err := rpc.DialOptions(ctx, endpoint.URL, opts...)
+	client, err := rpc.DialContext(ctx, endpoint.URL)
 	if err != nil {
 		return nil, fmt.Errorf("failed to dial go ethereum client: %w", err)
 	}
