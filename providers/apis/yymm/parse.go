@@ -3,9 +3,10 @@ package yymm
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
+
 	"github.com/skip-mev/slinky/providers/apis/defi/pancakeswap"
 	"github.com/skip-mev/slinky/providers/apis/jupiter"
-	"strings"
 
 	"github.com/skip-mev/slinky/providers/apis/defi/osmosis"
 

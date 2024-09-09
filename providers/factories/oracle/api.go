@@ -3,10 +3,11 @@ package oracle
 import (
 	"context"
 	"fmt"
-	"github.com/skip-mev/slinky/providers/apis/defi/pancakeswap"
-	"github.com/skip-mev/slinky/providers/apis/jupiter"
 	"net/http"
 	"strings"
+
+	"github.com/skip-mev/slinky/providers/apis/defi/pancakeswap"
+	"github.com/skip-mev/slinky/providers/apis/jupiter"
 
 	bitmartapi "github.com/skip-mev/slinky/providers/apis/bitmart"
 

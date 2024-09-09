@@ -3,10 +3,11 @@ package yymm
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/skip-mev/slinky/providers/apis/defi/pancakeswap"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/skip-mev/slinky/providers/apis/defi/pancakeswap"
 
 	"github.com/skip-mev/slinky/providers/apis/defi/osmosis"
 	"github.com/skip-mev/slinky/providers/apis/defi/uniswapv3"
