@@ -3,11 +3,12 @@ package oracle
 import (
 	"context"
 	"fmt"
+	"net/http"
+	"strings"
+
 	bitmartapi "github.com/skip-mev/connect/v2/providers/apis/bitmart"
 	"github.com/skip-mev/connect/v2/providers/apis/defi/pancakeswap"
 	"github.com/skip-mev/connect/v2/providers/apis/jupiter"
-	"net/http"
-	"strings"
 
 	"github.com/skip-mev/connect/v2/providers/apis/bingx"
 	"github.com/skip-mev/connect/v2/providers/apis/coinex"

@@ -13,6 +13,7 @@ import (
 	"github.com/skip-mev/connect/v2/providers/apis/coingecko"
 	"github.com/skip-mev/connect/v2/providers/apis/coinmarketcap"
 	"github.com/skip-mev/connect/v2/providers/apis/defi/osmosis"
+	"github.com/skip-mev/connect/v2/providers/apis/defi/pancakeswap"
 	"github.com/skip-mev/connect/v2/providers/apis/defi/raydium"
 	"github.com/skip-mev/connect/v2/providers/apis/defi/uniswapv3"
 	"github.com/skip-mev/connect/v2/providers/apis/dydx"

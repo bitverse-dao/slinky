@@ -186,7 +186,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolTransactorRaw) Transact(opts *bind.Transact
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) Factory(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "factory")
-
 	if err != nil {
 		return *new(common.Address), err
 	}
@@ -194,7 +193,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Factory(opts *bind.CallOpts) (commo
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
 
 	return out0, err
-
 }
 
 // Factory is a free data retrieval call binding the contract method 0xc45a0155.
@@ -217,7 +215,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Factory() (common.Address, e
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) Fee(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "fee")
-
 	if err != nil {
 		return *new(*big.Int), err
 	}
@@ -225,7 +222,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Fee(opts *bind.CallOpts) (*big.Int,
 	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
 
 	return out0, err
-
 }
 
 // Fee is a free data retrieval call binding the contract method 0xddca3f43.
@@ -248,7 +244,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Fee() (*big.Int, error) {
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) FeeGrowthGlobal0X128(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "feeGrowthGlobal0X128")
-
 	if err != nil {
 		return *new(*big.Int), err
 	}
@@ -256,7 +251,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) FeeGrowthGlobal0X128(opts *bind.Cal
 	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
 
 	return out0, err
-
 }
 
 // FeeGrowthGlobal0X128 is a free data retrieval call binding the contract method 0xf3058399.
@@ -279,7 +273,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) FeeGrowthGlobal0X128() (*big
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) FeeGrowthGlobal1X128(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "feeGrowthGlobal1X128")
-
 	if err != nil {
 		return *new(*big.Int), err
 	}
@@ -287,7 +280,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) FeeGrowthGlobal1X128(opts *bind.Cal
 	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
 
 	return out0, err
-
 }
 
 // FeeGrowthGlobal1X128 is a free data retrieval call binding the contract method 0x46141319.
@@ -310,7 +302,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) FeeGrowthGlobal1X128() (*big
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) Liquidity(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "liquidity")
-
 	if err != nil {
 		return *new(*big.Int), err
 	}
@@ -318,7 +309,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Liquidity(opts *bind.CallOpts) (*bi
 	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
 
 	return out0, err
-
 }
 
 // Liquidity is a free data retrieval call binding the contract method 0x1a686502.
@@ -341,7 +331,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Liquidity() (*big.Int, error
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) MaxLiquidityPerTick(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "maxLiquidityPerTick")
-
 	if err != nil {
 		return *new(*big.Int), err
 	}
@@ -349,7 +338,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) MaxLiquidityPerTick(opts *bind.Call
 	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
 
 	return out0, err
-
 }
 
 // MaxLiquidityPerTick is a free data retrieval call binding the contract method 0x70cf754a.
@@ -374,7 +362,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Observations(opts *bind.CallOpts, i
 	TickCumulative                    *big.Int
 	SecondsPerLiquidityCumulativeX128 *big.Int
 	Initialized                       bool
-}, error) {
+}, error,
+) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "observations", index)
 
@@ -394,7 +383,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Observations(opts *bind.CallOpts, i
 	outstruct.Initialized = *abi.ConvertType(out[3], new(bool)).(*bool)
 
 	return *outstruct, err
-
 }
 
 // Observations is a free data retrieval call binding the contract method 0x252c09d7.
@@ -405,7 +393,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolSession) Observations(index *big.Int) (stru
 	TickCumulative                    *big.Int
 	SecondsPerLiquidityCumulativeX128 *big.Int
 	Initialized                       bool
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.Observations(&_IPancakeV3Pool.CallOpts, index)
 }
 
@@ -417,7 +406,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Observations(index *big.Int)
 	TickCumulative                    *big.Int
 	SecondsPerLiquidityCumulativeX128 *big.Int
 	Initialized                       bool
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.Observations(&_IPancakeV3Pool.CallOpts, index)
 }
 
@@ -427,7 +417,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Observations(index *big.Int)
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) Observe(opts *bind.CallOpts, secondsAgos []uint32) (struct {
 	TickCumulatives                    []*big.Int
 	SecondsPerLiquidityCumulativeX128s []*big.Int
-}, error) {
+}, error,
+) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "observe", secondsAgos)
 
@@ -443,7 +434,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Observe(opts *bind.CallOpts, second
 	outstruct.SecondsPerLiquidityCumulativeX128s = *abi.ConvertType(out[1], new([]*big.Int)).(*[]*big.Int)
 
 	return *outstruct, err
-
 }
 
 // Observe is a free data retrieval call binding the contract method 0x883bdbfd.
@@ -452,7 +442,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Observe(opts *bind.CallOpts, second
 func (_IPancakeV3Pool *IPancakeV3PoolSession) Observe(secondsAgos []uint32) (struct {
 	TickCumulatives                    []*big.Int
 	SecondsPerLiquidityCumulativeX128s []*big.Int
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.Observe(&_IPancakeV3Pool.CallOpts, secondsAgos)
 }
 
@@ -462,7 +453,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolSession) Observe(secondsAgos []uint32) (str
 func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Observe(secondsAgos []uint32) (struct {
 	TickCumulatives                    []*big.Int
 	SecondsPerLiquidityCumulativeX128s []*big.Int
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.Observe(&_IPancakeV3Pool.CallOpts, secondsAgos)
 }
 
@@ -475,7 +467,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Positions(opts *bind.CallOpts, key 
 	FeeGrowthInside1LastX128 *big.Int
 	TokensOwed0              *big.Int
 	TokensOwed1              *big.Int
-}, error) {
+}, error,
+) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "positions", key)
 
@@ -497,7 +490,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Positions(opts *bind.CallOpts, key 
 	outstruct.TokensOwed1 = *abi.ConvertType(out[4], new(*big.Int)).(**big.Int)
 
 	return *outstruct, err
-
 }
 
 // Positions is a free data retrieval call binding the contract method 0x514ea4bf.
@@ -509,7 +501,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolSession) Positions(key [32]byte) (struct {
 	FeeGrowthInside1LastX128 *big.Int
 	TokensOwed0              *big.Int
 	TokensOwed1              *big.Int
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.Positions(&_IPancakeV3Pool.CallOpts, key)
 }
 
@@ -522,7 +515,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Positions(key [32]byte) (str
 	FeeGrowthInside1LastX128 *big.Int
 	TokensOwed0              *big.Int
 	TokensOwed1              *big.Int
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.Positions(&_IPancakeV3Pool.CallOpts, key)
 }
 
@@ -532,7 +526,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Positions(key [32]byte) (str
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) ProtocolFees(opts *bind.CallOpts) (struct {
 	Token0 *big.Int
 	Token1 *big.Int
-}, error) {
+}, error,
+) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "protocolFees")
 
@@ -548,7 +543,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) ProtocolFees(opts *bind.CallOpts) (
 	outstruct.Token1 = *abi.ConvertType(out[1], new(*big.Int)).(**big.Int)
 
 	return *outstruct, err
-
 }
 
 // ProtocolFees is a free data retrieval call binding the contract method 0x1ad8b03b.
@@ -557,7 +551,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) ProtocolFees(opts *bind.CallOpts) (
 func (_IPancakeV3Pool *IPancakeV3PoolSession) ProtocolFees() (struct {
 	Token0 *big.Int
 	Token1 *big.Int
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.ProtocolFees(&_IPancakeV3Pool.CallOpts)
 }
 
@@ -567,7 +562,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolSession) ProtocolFees() (struct {
 func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) ProtocolFees() (struct {
 	Token0 *big.Int
 	Token1 *big.Int
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.ProtocolFees(&_IPancakeV3Pool.CallOpts)
 }
 
@@ -582,7 +578,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Slot0(opts *bind.CallOpts) (struct 
 	ObservationCardinalityNext uint16
 	FeeProtocol                uint32
 	Unlocked                   bool
-}, error) {
+}, error,
+) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "slot0")
 
@@ -608,7 +605,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Slot0(opts *bind.CallOpts) (struct 
 	outstruct.Unlocked = *abi.ConvertType(out[6], new(bool)).(*bool)
 
 	return *outstruct, err
-
 }
 
 // Slot0 is a free data retrieval call binding the contract method 0x3850c7bd.
@@ -622,7 +618,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolSession) Slot0() (struct {
 	ObservationCardinalityNext uint16
 	FeeProtocol                uint32
 	Unlocked                   bool
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.Slot0(&_IPancakeV3Pool.CallOpts)
 }
 
@@ -637,7 +634,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Slot0() (struct {
 	ObservationCardinalityNext uint16
 	FeeProtocol                uint32
 	Unlocked                   bool
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.Slot0(&_IPancakeV3Pool.CallOpts)
 }
 
@@ -648,7 +646,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) SnapshotCumulativesInside(opts *bin
 	TickCumulativeInside          *big.Int
 	SecondsPerLiquidityInsideX128 *big.Int
 	SecondsInside                 uint32
-}, error) {
+}, error,
+) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "snapshotCumulativesInside", tickLower, tickUpper)
 
@@ -666,7 +665,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) SnapshotCumulativesInside(opts *bin
 	outstruct.SecondsInside = *abi.ConvertType(out[2], new(uint32)).(*uint32)
 
 	return *outstruct, err
-
 }
 
 // SnapshotCumulativesInside is a free data retrieval call binding the contract method 0xa38807f2.
@@ -676,7 +674,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolSession) SnapshotCumulativesInside(tickLowe
 	TickCumulativeInside          *big.Int
 	SecondsPerLiquidityInsideX128 *big.Int
 	SecondsInside                 uint32
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.SnapshotCumulativesInside(&_IPancakeV3Pool.CallOpts, tickLower, tickUpper)
 }
 
@@ -687,7 +686,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) SnapshotCumulativesInside(ti
 	TickCumulativeInside          *big.Int
 	SecondsPerLiquidityInsideX128 *big.Int
 	SecondsInside                 uint32
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.SnapshotCumulativesInside(&_IPancakeV3Pool.CallOpts, tickLower, tickUpper)
 }
 
@@ -697,7 +697,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) SnapshotCumulativesInside(ti
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) TickBitmap(opts *bind.CallOpts, wordPosition int16) (*big.Int, error) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "tickBitmap", wordPosition)
-
 	if err != nil {
 		return *new(*big.Int), err
 	}
@@ -705,7 +704,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) TickBitmap(opts *bind.CallOpts, wor
 	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
 
 	return out0, err
-
 }
 
 // TickBitmap is a free data retrieval call binding the contract method 0x5339c296.
@@ -728,7 +726,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) TickBitmap(wordPosition int1
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) TickSpacing(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "tickSpacing")
-
 	if err != nil {
 		return *new(*big.Int), err
 	}
@@ -736,7 +733,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) TickSpacing(opts *bind.CallOpts) (*
 	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
 
 	return out0, err
-
 }
 
 // TickSpacing is a free data retrieval call binding the contract method 0xd0c93a7c.
@@ -765,7 +761,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Ticks(opts *bind.CallOpts, tick *bi
 	SecondsPerLiquidityOutsideX128 *big.Int
 	SecondsOutside                 uint32
 	Initialized                    bool
-}, error) {
+}, error,
+) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "ticks", tick)
 
@@ -793,7 +790,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Ticks(opts *bind.CallOpts, tick *bi
 	outstruct.Initialized = *abi.ConvertType(out[7], new(bool)).(*bool)
 
 	return *outstruct, err
-
 }
 
 // Ticks is a free data retrieval call binding the contract method 0xf30dba93.
@@ -808,7 +804,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolSession) Ticks(tick *big.Int) (struct {
 	SecondsPerLiquidityOutsideX128 *big.Int
 	SecondsOutside                 uint32
 	Initialized                    bool
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.Ticks(&_IPancakeV3Pool.CallOpts, tick)
 }
 
@@ -824,7 +821,8 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Ticks(tick *big.Int) (struct
 	SecondsPerLiquidityOutsideX128 *big.Int
 	SecondsOutside                 uint32
 	Initialized                    bool
-}, error) {
+}, error,
+) {
 	return _IPancakeV3Pool.Contract.Ticks(&_IPancakeV3Pool.CallOpts, tick)
 }
 
@@ -834,7 +832,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Ticks(tick *big.Int) (struct
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) Token0(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "token0")
-
 	if err != nil {
 		return *new(common.Address), err
 	}
@@ -842,7 +839,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Token0(opts *bind.CallOpts) (common
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
 
 	return out0, err
-
 }
 
 // Token0 is a free data retrieval call binding the contract method 0x0dfe1681.
@@ -865,7 +861,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCallerSession) Token0() (common.Address, er
 func (_IPancakeV3Pool *IPancakeV3PoolCaller) Token1(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
 	err := _IPancakeV3Pool.contract.Call(opts, &out, "token1")
-
 	if err != nil {
 		return *new(common.Address), err
 	}
@@ -873,7 +868,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolCaller) Token1(opts *bind.CallOpts) (common
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
 
 	return out0, err
-
 }
 
 // Token1 is a free data retrieval call binding the contract method 0xd21220a7.
@@ -1182,7 +1176,6 @@ type IPancakeV3PoolBurn struct {
 //
 // Solidity: event Burn(address indexed owner, int24 indexed tickLower, int24 indexed tickUpper, uint128 amount, uint256 amount0, uint256 amount1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterBurn(opts *bind.FilterOpts, owner []common.Address, tickLower []*big.Int, tickUpper []*big.Int) (*IPancakeV3PoolBurnIterator, error) {
-
 	var ownerRule []interface{}
 	for _, ownerItem := range owner {
 		ownerRule = append(ownerRule, ownerItem)
@@ -1207,7 +1200,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterBurn(opts *bind.FilterOpts,
 //
 // Solidity: event Burn(address indexed owner, int24 indexed tickLower, int24 indexed tickUpper, uint128 amount, uint256 amount0, uint256 amount1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) WatchBurn(opts *bind.WatchOpts, sink chan<- *IPancakeV3PoolBurn, owner []common.Address, tickLower []*big.Int, tickUpper []*big.Int) (event.Subscription, error) {
-
 	var ownerRule []interface{}
 	for _, ownerItem := range owner {
 		ownerRule = append(ownerRule, ownerItem)
@@ -1347,7 +1339,6 @@ type IPancakeV3PoolCollect struct {
 //
 // Solidity: event Collect(address indexed owner, address recipient, int24 indexed tickLower, int24 indexed tickUpper, uint128 amount0, uint128 amount1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterCollect(opts *bind.FilterOpts, owner []common.Address, tickLower []*big.Int, tickUpper []*big.Int) (*IPancakeV3PoolCollectIterator, error) {
-
 	var ownerRule []interface{}
 	for _, ownerItem := range owner {
 		ownerRule = append(ownerRule, ownerItem)
@@ -1373,7 +1364,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterCollect(opts *bind.FilterOp
 //
 // Solidity: event Collect(address indexed owner, address recipient, int24 indexed tickLower, int24 indexed tickUpper, uint128 amount0, uint128 amount1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) WatchCollect(opts *bind.WatchOpts, sink chan<- *IPancakeV3PoolCollect, owner []common.Address, tickLower []*big.Int, tickUpper []*big.Int) (event.Subscription, error) {
-
 	var ownerRule []interface{}
 	for _, ownerItem := range owner {
 		ownerRule = append(ownerRule, ownerItem)
@@ -1512,7 +1502,6 @@ type IPancakeV3PoolCollectProtocol struct {
 //
 // Solidity: event CollectProtocol(address indexed sender, address indexed recipient, uint128 amount0, uint128 amount1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterCollectProtocol(opts *bind.FilterOpts, sender []common.Address, recipient []common.Address) (*IPancakeV3PoolCollectProtocolIterator, error) {
-
 	var senderRule []interface{}
 	for _, senderItem := range sender {
 		senderRule = append(senderRule, senderItem)
@@ -1533,7 +1522,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterCollectProtocol(opts *bind.
 //
 // Solidity: event CollectProtocol(address indexed sender, address indexed recipient, uint128 amount0, uint128 amount1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) WatchCollectProtocol(opts *bind.WatchOpts, sink chan<- *IPancakeV3PoolCollectProtocol, sender []common.Address, recipient []common.Address) (event.Subscription, error) {
-
 	var senderRule []interface{}
 	for _, senderItem := range sender {
 		senderRule = append(senderRule, senderItem)
@@ -1669,7 +1657,6 @@ type IPancakeV3PoolFlash struct {
 //
 // Solidity: event Flash(address indexed sender, address indexed recipient, uint256 amount0, uint256 amount1, uint256 paid0, uint256 paid1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterFlash(opts *bind.FilterOpts, sender []common.Address, recipient []common.Address) (*IPancakeV3PoolFlashIterator, error) {
-
 	var senderRule []interface{}
 	for _, senderItem := range sender {
 		senderRule = append(senderRule, senderItem)
@@ -1690,7 +1677,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterFlash(opts *bind.FilterOpts
 //
 // Solidity: event Flash(address indexed sender, address indexed recipient, uint256 amount0, uint256 amount1, uint256 paid0, uint256 paid1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) WatchFlash(opts *bind.WatchOpts, sink chan<- *IPancakeV3PoolFlash, sender []common.Address, recipient []common.Address) (event.Subscription, error) {
-
 	var senderRule []interface{}
 	for _, senderItem := range sender {
 		senderRule = append(senderRule, senderItem)
@@ -1822,7 +1808,6 @@ type IPancakeV3PoolIncreaseObservationCardinalityNext struct {
 //
 // Solidity: event IncreaseObservationCardinalityNext(uint16 observationCardinalityNextOld, uint16 observationCardinalityNextNew)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterIncreaseObservationCardinalityNext(opts *bind.FilterOpts) (*IPancakeV3PoolIncreaseObservationCardinalityNextIterator, error) {
-
 	logs, sub, err := _IPancakeV3Pool.contract.FilterLogs(opts, "IncreaseObservationCardinalityNext")
 	if err != nil {
 		return nil, err
@@ -1834,7 +1819,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterIncreaseObservationCardinal
 //
 // Solidity: event IncreaseObservationCardinalityNext(uint16 observationCardinalityNextOld, uint16 observationCardinalityNextNew)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) WatchIncreaseObservationCardinalityNext(opts *bind.WatchOpts, sink chan<- *IPancakeV3PoolIncreaseObservationCardinalityNext) (event.Subscription, error) {
-
 	logs, sub, err := _IPancakeV3Pool.contract.WatchLogs(opts, "IncreaseObservationCardinalityNext")
 	if err != nil {
 		return nil, err
@@ -1957,7 +1941,6 @@ type IPancakeV3PoolInitialize struct {
 //
 // Solidity: event Initialize(uint160 sqrtPriceX96, int24 tick)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterInitialize(opts *bind.FilterOpts) (*IPancakeV3PoolInitializeIterator, error) {
-
 	logs, sub, err := _IPancakeV3Pool.contract.FilterLogs(opts, "Initialize")
 	if err != nil {
 		return nil, err
@@ -1969,7 +1952,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterInitialize(opts *bind.Filte
 //
 // Solidity: event Initialize(uint160 sqrtPriceX96, int24 tick)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) WatchInitialize(opts *bind.WatchOpts, sink chan<- *IPancakeV3PoolInitialize) (event.Subscription, error) {
-
 	logs, sub, err := _IPancakeV3Pool.contract.WatchLogs(opts, "Initialize")
 	if err != nil {
 		return nil, err
@@ -2097,7 +2079,6 @@ type IPancakeV3PoolMint struct {
 //
 // Solidity: event Mint(address sender, address indexed owner, int24 indexed tickLower, int24 indexed tickUpper, uint128 amount, uint256 amount0, uint256 amount1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterMint(opts *bind.FilterOpts, owner []common.Address, tickLower []*big.Int, tickUpper []*big.Int) (*IPancakeV3PoolMintIterator, error) {
-
 	var ownerRule []interface{}
 	for _, ownerItem := range owner {
 		ownerRule = append(ownerRule, ownerItem)
@@ -2122,7 +2103,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterMint(opts *bind.FilterOpts,
 //
 // Solidity: event Mint(address sender, address indexed owner, int24 indexed tickLower, int24 indexed tickUpper, uint128 amount, uint256 amount0, uint256 amount1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) WatchMint(opts *bind.WatchOpts, sink chan<- *IPancakeV3PoolMint, owner []common.Address, tickLower []*big.Int, tickUpper []*big.Int) (event.Subscription, error) {
-
 	var ownerRule []interface{}
 	for _, ownerItem := range owner {
 		ownerRule = append(ownerRule, ownerItem)
@@ -2260,7 +2240,6 @@ type IPancakeV3PoolSetFeeProtocol struct {
 //
 // Solidity: event SetFeeProtocol(uint32 feeProtocol0Old, uint32 feeProtocol1Old, uint32 feeProtocol0New, uint32 feeProtocol1New)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterSetFeeProtocol(opts *bind.FilterOpts) (*IPancakeV3PoolSetFeeProtocolIterator, error) {
-
 	logs, sub, err := _IPancakeV3Pool.contract.FilterLogs(opts, "SetFeeProtocol")
 	if err != nil {
 		return nil, err
@@ -2272,7 +2251,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterSetFeeProtocol(opts *bind.F
 //
 // Solidity: event SetFeeProtocol(uint32 feeProtocol0Old, uint32 feeProtocol1Old, uint32 feeProtocol0New, uint32 feeProtocol1New)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) WatchSetFeeProtocol(opts *bind.WatchOpts, sink chan<- *IPancakeV3PoolSetFeeProtocol) (event.Subscription, error) {
-
 	logs, sub, err := _IPancakeV3Pool.contract.WatchLogs(opts, "SetFeeProtocol")
 	if err != nil {
 		return nil, err
@@ -2402,7 +2380,6 @@ type IPancakeV3PoolSwap struct {
 //
 // Solidity: event Swap(address indexed sender, address indexed recipient, int256 amount0, int256 amount1, uint160 sqrtPriceX96, uint128 liquidity, int24 tick, uint128 protocolFeesToken0, uint128 protocolFeesToken1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterSwap(opts *bind.FilterOpts, sender []common.Address, recipient []common.Address) (*IPancakeV3PoolSwapIterator, error) {
-
 	var senderRule []interface{}
 	for _, senderItem := range sender {
 		senderRule = append(senderRule, senderItem)
@@ -2423,7 +2400,6 @@ func (_IPancakeV3Pool *IPancakeV3PoolFilterer) FilterSwap(opts *bind.FilterOpts,
 //
 // Solidity: event Swap(address indexed sender, address indexed recipient, int256 amount0, int256 amount1, uint160 sqrtPriceX96, uint128 liquidity, int24 tick, uint128 protocolFeesToken0, uint128 protocolFeesToken1)
 func (_IPancakeV3Pool *IPancakeV3PoolFilterer) WatchSwap(opts *bind.WatchOpts, sink chan<- *IPancakeV3PoolSwap, sender []common.Address, recipient []common.Address) (event.Subscription, error) {
-
 	var senderRule []interface{}
 	for _, senderItem := range sender {
 		senderRule = append(senderRule, senderItem)

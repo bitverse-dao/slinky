@@ -3,7 +3,7 @@ package oracle
 import (
 	"net/http"
 
-	"github.com/skip-mev/slinky/providers/apis/yymm"
+	"github.com/skip-mev/connect/v2/providers/apis/yymm"
 
 	"go.uber.org/zap"
 
@@ -71,10 +71,10 @@ func MarketMapProviderFactory(
 			logger,
 		)
 		ids = []types.Chain{{ChainID: dydx.ChainID}}
-	case name == yymm.Name:
+	case yymm.Name:
 		apiDataHandler, err = yymm.NewAPIHandler(logger, cfg.API)
 		ids = []types.Chain{{ChainID: yymm.ChainID}}
-	case name == yymm.SwitchOverAPIHandlerName:
+	case yymm.SwitchOverAPIHandlerName:
 		marketMapFetcher, err = yymm.NewDefaultSwitchOverMarketMapFetcher(
 			logger,
 			cfg.API,

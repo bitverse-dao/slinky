@@ -7,7 +7,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/skip-mev/slinky/oracle/config"
+	"github.com/skip-mev/connect/v2/oracle/config"
 )
 
 const (
@@ -63,17 +63,15 @@ func (pc PoolConfig) MustToJSON() string {
 	return string(b)
 }
 
-var (
-	// DefaultAPIConfig is the default configuration for the Uniswap API. Specifically this is for
-	// BSC mainnet.
-	DefaultAPIConfig = config.APIConfig{
-		Name:             Name,
-		Atomic:           true,
-		Enabled:          true,
-		Timeout:          1000 * time.Millisecond,
-		Interval:         2000 * time.Millisecond,
-		ReconnectTimeout: 2000 * time.Millisecond,
-		MaxQueries:       1,
-		Endpoints:        []config.Endpoint{{URL: BSC_URL}},
-	}
-)
+// DefaultAPIConfig is the default configuration for the Uniswap API. Specifically this is for
+// BSC mainnet.
+var DefaultAPIConfig = config.APIConfig{
+	Name:             Name,
+	Atomic:           true,
+	Enabled:          true,
+	Timeout:          1000 * time.Millisecond,
+	Interval:         2000 * time.Millisecond,
+	ReconnectTimeout: 2000 * time.Millisecond,
+	MaxQueries:       1,
+	Endpoints:        []config.Endpoint{{URL: BSC_URL}},
+}

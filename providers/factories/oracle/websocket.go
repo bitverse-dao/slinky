@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/skip-mev/slinky/providers/websockets/bitget"
-	"github.com/skip-mev/slinky/providers/websockets/bitmart"
-	"github.com/skip-mev/slinky/providers/websockets/bitverse"
+	"github.com/skip-mev/connect/v2/providers/websockets/bitget"
+	"github.com/skip-mev/connect/v2/providers/websockets/bitmart"
+	"github.com/skip-mev/connect/v2/providers/websockets/bitverse"
 
 	"go.uber.org/zap"
 

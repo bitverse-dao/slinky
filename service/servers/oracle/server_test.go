@@ -85,7 +85,7 @@ func (s *ServerTestSuite) SetupTest() {
 
 	// Health check
 	for i := 0; ; i++ {
-		_, err := s.httpClient.Get(fmt.Sprintf("http://%s:%s/slinky/oracle/v1/version", localhost, s.port))
+		_, err := s.httpClient.Get(fmt.Sprintf("http://%s:%s/connect/v2/oracle/v1/version", localhost, s.port))
 		if err == nil {
 			break
 		}

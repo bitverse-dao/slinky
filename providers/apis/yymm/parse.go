@@ -5,8 +5,10 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/skip-mev/slinky/providers/apis/defi/pancakeswap"
-	"github.com/skip-mev/slinky/providers/apis/jupiter"
+	"github.com/skip-mev/connect/v2/providers/apis/defi/osmosis"
+
+	"github.com/skip-mev/connect/v2/providers/apis/defi/pancakeswap"
+	"github.com/skip-mev/connect/v2/providers/apis/jupiter"
 
 	"github.com/skip-mev/connect/v2/providers/apis/bingx"
 	"github.com/skip-mev/connect/v2/providers/apis/bitmart"

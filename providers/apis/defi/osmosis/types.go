@@ -9,6 +9,8 @@ import (
 	"sync"
 	"time"
 
+	"github.com/skip-mev/connect/v2/pkg/math"
+
 	"github.com/skip-mev/connect/v2/oracle/config"
 	"github.com/skip-mev/connect/v2/oracle/types"
 )
@@ -144,6 +146,11 @@ type SpotPriceResponse struct {
 	SpotPrice string `json:"spot_price"`
 }
 
+type WrappedSpotPriceResponse struct {
+	SpotPriceResponse
+	BlockHeight uint64 `json:"block_height"`
+}
+
 // ScalePrice scales the price to the desired ticker decimals. The price is normalized to
 // the token decimals in the erc20 token contracts.
 func ScalePrice(
@@ -156,9 +163,4 @@ func ScalePrice(
 		metadata.QuoteDecimals,
 	)
 	return new(big.Float).Mul(price, erc20ScalingFactor)
-}
-
-type WrappedSpotPriceResponse struct {
-	SpotPriceResponse
-	BlockHeight uint64 `json:"block_height"`
 }
