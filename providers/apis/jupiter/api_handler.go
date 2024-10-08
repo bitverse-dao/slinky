@@ -18,7 +18,7 @@ import (
 var _ types.PriceAPIDataHandler = (*APIHandler)(nil)
 
 // APIHandler implements the PriceAPIDataHandler interface for bingx.
-// for more information about the bingx API, refer to the following link:
+// for more information about the bingx API, refer to the following link.
 type APIHandler struct {
 	// api is the config for the bingx API.
 	api config.APIConfig

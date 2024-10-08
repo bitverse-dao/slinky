@@ -29,12 +29,12 @@ var DefaultAPIConfig = config.APIConfig{
 }
 
 type (
-	BitmartResponse struct {
-		Code int         `json:"code"`
-		Data BitmartData `json:"data"`
+	Response struct {
+		Code int  `json:"code"`
+		Data Data `json:"data"`
 	}
 
-	BitmartData struct { //nolint
+	Data struct {
 		Symbol string `json:"symbol"`
 		Price  string `json:"last"`
 	}

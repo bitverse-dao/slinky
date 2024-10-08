@@ -215,7 +215,7 @@ func OsmosisMetadataFromTicker(ticker string) (string, error) {
 	}
 	poolID, err := strconv.ParseUint(fields[0], 10, 64)
 	if err != nil {
-		return "", fmt.Errorf("failed to parse pool Id: %w", err)
+		return "", fmt.Errorf("failed to parse pool ID: %w", err)
 	}
 
 	baseDecimals, err := strconv.ParseInt(fields[2], 10, 64)

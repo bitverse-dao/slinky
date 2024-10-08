@@ -5,7 +5,7 @@ package types
 const MarketParamIndex = "params"
 
 type ResearchJSONMarketParam struct {
-	// Id is the unique identifier for the market
+	// ID is the unique identifier for the market
 	ID uint32 `json:"id"`
 
 	// Pair is the ticker symbol for the market

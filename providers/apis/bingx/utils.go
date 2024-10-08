@@ -29,12 +29,12 @@ var DefaultAPIConfig = config.APIConfig{
 }
 
 type (
-	BingxResponse struct {
-		Code int         `json:"code"`
-		Data []BingxData `json:"data"`
+	Response struct {
+		Code int    `json:"code"`
+		Data []Data `json:"data"`
 	}
 
-	BingxData struct { //nolint
+	Data struct {
 		Symbol string `json:"symbol"`
 		Trades []struct {
 			Price string `json:"price"`

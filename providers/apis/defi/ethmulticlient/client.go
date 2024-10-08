@@ -63,12 +63,6 @@ func NewGoEthereumClientImpl(
 
 	// var opts []rpc.ClientOption
 	endpoint := api.Endpoints[index] // pin
-	//if endpoint.Authentication.Enabled() {
-	//	opts = append(opts, rpc.WithHTTPAuth(func(h http.Header) error {
-	//		h.Set(endpoint.Authentication.APIKeyHeader, endpoint.Authentication.APIKey)
-	//		return nil
-	//	}))
-	//}
 
 	client, err := rpc.DialContext(ctx, endpoint.URL)
 	if err != nil {

@@ -15,8 +15,6 @@ import (
 
 var _ types.PriceAPIDataHandler = (*APIHandler)(nil)
 
-// APIHandler implements the PriceAPIDataHandler interface for bingx.
-// for more information about the bingx API, refer to the following link:
 type APIHandler struct {
 	// api is the config for the bingx API.
 	api config.APIConfig
@@ -73,7 +71,7 @@ func (h *APIHandler) ParseResponse(
 		)
 	}
 
-	var result BingxResponse
+	var result Response
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
 		return types.NewPriceResponseWithErr(
 			tickers,

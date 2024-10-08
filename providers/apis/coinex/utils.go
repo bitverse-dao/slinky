@@ -29,12 +29,12 @@ var DefaultAPIConfig = config.APIConfig{
 }
 
 type (
-	CoinexResponse struct {
-		Code int          `json:"code"`
-		Data []CoinexData `json:"data"`
+	Response struct {
+		Code int    `json:"code"`
+		Data []Data `json:"data"`
 	}
 
-	CoinexData struct {
+	Data struct {
 		Symbol    string `json:"market"`
 		LastPrice string `json:"last"`
 	}

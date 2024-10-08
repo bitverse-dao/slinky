@@ -149,7 +149,7 @@ type BaseMessage struct {
 type SubscriptionResponse struct {
 	ReqID   string `json:"id"`
 	Success bool   `json:"success"`
-	ConnId  string `json:"conn_id"`
+	ConnID  string `json:"conn_id"`
 	Data    struct {
 		FailTopics    []string `json:"fail_topics"`
 		SuccessTopics []string `json:"success_topics"`
@@ -160,7 +160,7 @@ type SubscriptionResponse struct {
 
 // TickerUpdateMessage is the update sent for a subscribed ticker on the ByBit websocket API.
 type TickerUpdateMessage struct {
-	Id    string           `json:"id"`
+	ID    string           `json:"id"`
 	Ts    int64            `json:"ts"`
 	Type  string           `json:"type"`
 	Topic string           `json:"topic"`

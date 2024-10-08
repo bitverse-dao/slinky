@@ -22,7 +22,7 @@ import (
 func (h *WebSocketHandler) parseSubscriptionResponse(resp SubscriptionResponse) ([]handlers.WebsocketEncodedMessage, error) {
 	// A response with an event type of subscribe means that we have successfully subscribed to the channel.
 	if t := Operation(resp.Type); t == OperationCommandResp && resp.Success {
-		h.logger.Info("successfully subscribed to channel", zap.String("connection", resp.ConnId))
+		h.logger.Info("successfully subscribed to channel", zap.String("connection", resp.ConnID))
 		return nil, nil
 	}
 

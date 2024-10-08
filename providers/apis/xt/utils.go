@@ -29,12 +29,12 @@ var DefaultAPIConfig = config.APIConfig{
 }
 
 type (
-	XtResponse struct {
-		Code int      `json:"rc"`
-		Data []XtData `json:"result"`
+	Response struct {
+		Code int    `json:"rc"`
+		Data []Data `json:"result"`
 	}
 
-	XtData struct { //nolint
+	Data struct {
 		Symbol string `json:"s"`
 		Price  string `json:"p"`
 	}
