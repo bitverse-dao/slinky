@@ -19,7 +19,7 @@ const (
 // DefaultAPIConfig is the default configuration for the bingx API.
 var DefaultAPIConfig = config.APIConfig{
 	Name:             Name,
-	Atomic:           true,
+	Atomic:           false,
 	Enabled:          true,
 	Timeout:          3000 * time.Millisecond,
 	Interval:         750 * time.Millisecond,
