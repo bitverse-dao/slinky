@@ -3,7 +3,7 @@ package yymm
 import (
 	"encoding/json"
 	"fmt"
-	coinbaseapi "github.com/skip-mev/connect/v2/providers/apis/coinbase"
+	"github.com/skip-mev/connect/v2/providers/websockets/coinbase"
 	"strings"
 
 	"github.com/skip-mev/connect/v2/providers/apis/defi/osmosis"
@@ -55,7 +55,7 @@ var ProviderMapping = map[string]string{
 	"Kucoin":               kucoin.Name,
 	"Okx":                  okx.Name,
 	"Mexc":                 mexc.Name,
-	"CoinbasePro":          coinbaseapi.Name,
+	"CoinbasePro":          coinbase.Name,
 	"Bitget":               bitget.Name,
 	"Bingx":                bingx.Name,
 	"Coinex":               coinex.Name,
