@@ -140,7 +140,7 @@ var DefaultAPIConfig = config.APIConfig{
 	Enabled:          true,
 	Name:             Name,
 	Timeout:          2 * time.Second,
-	Interval:         2000 * time.Millisecond,
+	Interval:         500 * time.Millisecond,
 	ReconnectTimeout: 2000 * time.Millisecond,
 	MaxQueries:       10,
 	Atomic:           false,
