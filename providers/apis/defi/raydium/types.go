@@ -147,7 +147,7 @@ var DefaultAPIConfig = config.APIConfig{
 	BatchSize:        25, // maximal # of accounts in getMultipleAccounts query is 100
 	Endpoints: []config.Endpoint{
 		{
-			URL: "https://mainnet.helius-rpc.com/?api-key=cccdc548-f61b-42b5-b725-850d6da3fa71",
+			URL: "https://api.mainnet-beta.solana.com",
 		},
 	},
 	MaxBlockHeightAge: 30 * time.Second,

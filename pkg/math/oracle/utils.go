@@ -44,6 +44,9 @@ func (m *IndexPriceAggregator) GetProviderPrice(
 			price = new(big.Float).Quo(solPirce, price)
 		}
 	}
+	if price.Cmp(big.NewFloat(0)) == 0 {
+		return nil, fmt.Errorf("price for %s ticker %s is 0", cfg.Name, cfg.OffChainTicker)
+	}
 	return price, nil
 }
 
