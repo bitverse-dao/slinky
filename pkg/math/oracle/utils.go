@@ -2,8 +2,10 @@ package oracle
 
 import (
 	"fmt"
+	"github.com/skip-mev/connect/v2/providers/apis/defi/raydium"
 	"maps"
 	"math/big"
+	"strings"
 
 	"github.com/skip-mev/connect/v2/oracle/types"
 	pkgtypes "github.com/skip-mev/connect/v2/pkg/types"
@@ -33,6 +35,15 @@ func (m *IndexPriceAggregator) GetProviderPrice(
 		return new(big.Float).Quo(big.NewFloat(1), price), nil
 	}
 
+	if cfg.Name == raydium.Name {
+		if strings.Contains(cfg.GetMetadata_JSON(), ":9") {
+			solPirce, o := m.indexPrices["SOL/USD"]
+			if !o {
+				return nil, fmt.Errorf("missing index price for ticker: %s", "SOL/USD")
+			}
+			price = new(big.Float).Quo(solPirce, price)
+		}
+	}
 	return price, nil
 }
 
